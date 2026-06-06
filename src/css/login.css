@@ -1,0 +1,21 @@
+body {
+    font-family: 'roboto-regular', sans-serif;
+}
+
+.login-main h1 {
+    color: #052C65;
+    font-family: 'roboto-medium', sans-serif;
+}
+
+.login-form {
+    width: 397px;
+    box-sizing: border-box;
+}
+
+.input-group span {
+    background-color: #E9ECEF;
+}
+
+.form-control::placeholder {
+    color: #6C757D;
+}
