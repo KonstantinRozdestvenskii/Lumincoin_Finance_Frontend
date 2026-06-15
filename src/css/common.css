@@ -7,3 +7,15 @@
     font-family: 'roboto-medium';
     src: url('../fonts/Roboto_Medium.ttf');
 }
+
+.sidebar {
+    width: 219px;
+}
+
+.main-content {
+    margin-left: 219px;
+}
+
+.body {
+    font-family: 'roboto-regular', sans-serif;
+}

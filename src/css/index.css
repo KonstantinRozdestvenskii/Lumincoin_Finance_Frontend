@@ -2,14 +2,6 @@ body {
     color: #052C65;
 }
 
-.sidebar {
-    width: 219px;
-}
-
-.main-content {
-    margin-left: 219px;
-}
-
 
 nav a {
     font-family: 'roboto-regular', sans-serif;
@@ -71,12 +63,12 @@ li.nav-item {
     box-sizing: border-box;
 }
 
-.chart-container {
-    width: 437px;
-    height: 467px;
-}
+/*.chart-container {*/
+/*    width: 437px;*/
+/*    height: 467px;*/
+/*}*/
 
-.chart-container canvas {
-    width: 100% !important;
-    height: 100% !important;
-}
+/*.chart-container canvas {*/
+/*    width: 100% !important;*/
+/*    height: 100% !important;*/
+/*}*/

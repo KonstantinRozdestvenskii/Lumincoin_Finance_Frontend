@@ -107,14 +107,14 @@
                     <input type="date" class="date-input border-0 border-bottom border-secondary p-0 text-secondary">
                 </div>
             </div>
-            <div class="charts d-flex justify-content-around my-5 pt-4">
+            <div class="charts d-flex my-5 pt-4">
                 <div>
-                    <div class="chart-container">
+                    <div class="chart-container ps-4 me-5">
                         <canvas id="income-chart"></canvas>
                     </div>
                 </div>
                 <div>
-                    <div class="chart-container">
+                    <div class="chart-container ms-5 ps-4">
                         <canvas id="expense-chart"></canvas>
                     </div>
                 </div>
@@ -147,6 +147,13 @@
                 // Добавляем нужный отступ (40px)
                 this.height += 40;
             }
+        }
+    };
+
+    const resizePlugin = {
+        afterInit(chart) {
+            // Устанавливаем точные размеры canvas
+            chart.resize(437, 467);
         }
     };
 
@@ -209,15 +216,21 @@
         type: 'pie',
         data: incomeData,
         options: createOptions('Доходы'),
-        plugins: [legendSpacingPlugin]
+        plugins: [legendSpacingPlugin, resizePlugin]
     });
 
     new Chart(document.getElementById('expense-chart'), {
         type: 'pie',
         data: expenseData,
         options: createOptions('Расходы'),
-        plugins: [legendSpacingPlugin]
+        plugins: [legendSpacingPlugin, resizePlugin]
     });
+
+    // document.getElementById('income-chart').style.width = '437px';
+    // document.getElementById('income-chart').style.height = '467px';
+    // document.getElementById('expense-chart').style.width = '437px';
+    // document.getElementById('expense-chart').style.height = '467px';
+
 </script>
 
 </body>
