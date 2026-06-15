@@ -1,9 +1,23 @@
+body {
+    color: #052C65;
+}
+
+.sidebar {
+    width: 219px;
+}
+
+.main-content {
+    margin-left: 219px;
+}
+
 
 nav a {
-    font-family: roboto-regular, sans-serif;
+    font-family: 'roboto-regular', sans-serif;
     font-size: 14px;
     color: #052C65;
 }
+
+
 
 li.nav-item {
     font-size: 14px;
@@ -34,7 +48,7 @@ li.nav-item {
 }
 
 .balance {
-    font-family: roboto-medium, sans-serif;
+    font-family: 'roboto-medium', sans-serif;
 }
 
 .balance span {
@@ -43,4 +57,26 @@ li.nav-item {
 
 .dropdown a:first-child::after {
     content: none;
+}
+
+.container h1 {
+    font-family: 'roboto-medium', sans-serif;
+}
+
+.date-input:focus {
+    outline: none;
+}
+
+.container {
+    box-sizing: border-box;
+}
+
+.chart-container {
+    width: 437px;
+    height: 467px;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
 }
