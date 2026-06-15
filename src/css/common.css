@@ -19,3 +19,60 @@
 .body {
     font-family: 'roboto-regular', sans-serif;
 }
+
+nav a {
+    font-family: 'roboto-regular', sans-serif;
+    font-size: 14px;
+    color: #052C65;
+}
+
+
+li.nav-item {
+    font-size: 14px;
+}
+
+.nav-link {
+    color: #052C65;
+}
+
+/* Рамка и скругление ТОЛЬКО для активного li */
+.nav-item.active {
+    border: 1px solid #0d6efd !important;
+    border-radius: 4px !important;
+    overflow: hidden;
+}
+
+
+.nav-link svg, .nav-link path {
+    fill: #052C65
+}
+
+.nav-link.active svg, .nav-link.active path {
+    fill: white;
+}
+
+
+.toggle-arrow {
+    transition: transform 0.35s ease;
+    transform-origin: center;
+}
+
+.btn-toggle:not(.collapsed) .toggle-arrow {
+    transform: rotate(90deg);
+}
+
+.scrollarea {
+    overflow-y: auto;
+}
+
+.balance {
+    font-family: 'roboto-medium', sans-serif;
+}
+
+.balance span {
+    color: #0D6EFD;
+}
+
+.dropdown a:first-child::after {
+    content: none;
+}
