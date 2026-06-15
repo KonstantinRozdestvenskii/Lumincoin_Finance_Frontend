@@ -135,6 +135,21 @@
         blue: '#2563EB'
     };
 
+    const legendSpacingPlugin = {
+        beforeInit(chart) {
+            // Сохраняем оригинальную функцию fit
+            const originalFit = chart.legend.fit;
+
+            // Переопределяем её
+            chart.legend.fit = function fit() {
+                // Вызываем оригинальную функцию
+                originalFit.bind(chart.legend)();
+                // Добавляем нужный отступ (40px)
+                this.height += 40;
+            }
+        }
+    };
+
     const incomeData = {
         labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
         datasets: [{
@@ -157,11 +172,8 @@
 
     // Общие настройки с заголовком
     const createOptions = (titleText) => ({
-        responsive: false,
+        responsive: true,
         maintainAspectRatio: false,
-        padding: {
-            bottom: 20
-        },
         plugins: {
             legend: {
                 display: true,
@@ -172,8 +184,9 @@
                     padding: 10,
                     font: {
                         family: "'roboto-medium', sans-serif",
-                        size: 12
-                    }
+                        size: 12,
+                    },
+                    color: '#000000',
                 }
             },
             title: {
@@ -195,13 +208,15 @@
     new Chart(document.getElementById('income-chart'), {
         type: 'pie',
         data: incomeData,
-        options: createOptions('Доходы')
+        options: createOptions('Доходы'),
+        plugins: [legendSpacingPlugin]
     });
 
     new Chart(document.getElementById('expense-chart'), {
         type: 'pie',
         data: expenseData,
-        options: createOptions('Расходы')
+        options: createOptions('Расходы'),
+        plugins: [legendSpacingPlugin]
     });
 </script>
 
