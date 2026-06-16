@@ -1,0 +1,16 @@
+h2, h3 {
+    font-family: 'roboto-medium', sans-serif;
+    color: #290661;
+}
+
+.categories {
+    min-height: 121px;
+}
+
+.popup-income {
+    height: 184px;
+}
+
+.add-link {
+    cursor: pointer;
+}

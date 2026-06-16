@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Главная | Luminincoin Finance</title>
+    <title>Категории расходов | Luminincoin Finance</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="src/css/common.css">
-    <link rel="stylesheet" href="src/css/index.css">
+    <link rel="stylesheet" href="src/css/categories.css">
 </head>
 <body>
+
 <div class="d-flex vh-100">
-    <!-- САЙДБАР — фиксированный -->
     <nav class="sidebar d-flex flex-column border-end position-fixed top-0 start-0 vh-100 overflow-hidden">
         <div class="flex-shrink-0 px-5 py-3 border-bottom">
             <img src="src/images/logo.png" alt="логотип"
@@ -18,7 +18,7 @@
         <div class="flex-grow-1 overflow-auto py-5 px-3">
             <ul class="nav nav-pills flex-column mb-0">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link d-flex align-items-center active" aria-current="page">
+                    <a href="index.html" class="nav-link d-flex align-items-center" aria-current="page">
                         <svg class="me-2" width="15" height="14" viewBox="0 0 15 14" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -51,18 +51,18 @@
                         Доходы & Расходы
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn-toggle d-flex align-items-center justify-content-between rounded-0"
+                <li class="nav-item active">
+                    <a class="nav-link btn-toggle d-flex align-items-center justify-content-between rounded-0 active"
                        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                         Категории
                         <svg class="toggle-arrow" width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M0.146894 12.8546C0.0528521 12.7608 0 12.6335 0 12.5006C0 12.3678 0.0528521 12.2404 0.146894 12.1466L5.79389 6.50064L0.146894 0.854643C0.0204218 0.72817 -0.0289712 0.543834 0.0173208 0.37107C0.0636128 0.198306 0.198557 0.0633621 0.371321 0.0170698C0.544085 -0.0292225 0.728422 0.0201702 0.854894 0.146643L6.85489 6.14664C6.94894 6.24045 7.00179 6.36782 7.00179 6.50064C7.00179 6.63347 6.94894 6.76084 6.85489 6.85464L0.854894 12.8546C0.76109 12.9487 0.633721 13.0015 0.500894 13.0015C0.368066 13.0015 0.240698 12.9487 0.146894 12.8546Z" fill="#052C65"/>
                         </svg>
                     </a>
-                    <div class="collapse" id="home-collapse">
+                    <div class="collapse show" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal small">
                             <li class="nav-item"><a href="categories-income.html" class="nav-link d-flex text-decoration-none rounded-0">Доходы</a></li>
-                            <li class="nav-item"><a href="categories-expense.html" class="nav-link d-flex text-decoration-none rounded-0">Расходы</a></li>
+                            <li class="nav-item"><a href="categories-expense.html" class="nav-link d-flex text-decoration-none rounded-0 active">Расходы</a></li>
                         </ul>
                     </div>
                 </li>
@@ -88,146 +88,121 @@
     </nav>
     <main class="main-content flex-grow-1">
         <div class="container-fluid px-5 py-5">
-            <h1 class="ms-2 mb-4 pb-2 mt-5">Главная</h1>
-            <div class="d-flex align-items-center ms-2 pb-5 mb-5">
-                <button class="btn btn-secondary me-1">Сегодня</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Неделя</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Месяц</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Год</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Все</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Интервал</button>
-                <div class="ms-3">
-                    <span class="me-1">с</span>
-                    <input type="date" class="date-input border-0 border-bottom border-secondary p-0 text-secondary">
-                    <span class="ms-3 me-1">по</span>
-                    <input type="date" class="date-input border-0 border-bottom border-secondary p-0 text-secondary">
-                </div>
-            </div>
-            <div class="charts d-flex my-5 pt-4">
-                <div>
-                    <div class="chart-container ps-4 me-5">
-                        <canvas id="income-chart"></canvas>
+            <h1 class="mb-4 pb-3">Расходы</h1>
+            <div class="row gy-3 gx-3">
+
+                <div class="col-4">
+                    <div class="categories p-3 border border-secondary rounded-3">
+                        <h2 class="mb-2 fs-3">Еда</h2>
+                        <div class="d-flex">
+                            <button class="btn btn-primary me-2">Редактировать</button>
+                            <button class="btn btn-danger">Удалить</button>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <div class="chart-container ms-5 ps-4">
-                        <canvas id="expense-chart"></canvas>
+
+                <div class="col-4">
+                    <div class="categories p-3 border border-secondary rounded-3">
+                        <h2 class="mb-2 fs-3">Жильё</h2>
+                        <div class="d-flex">
+                            <button class="btn btn-primary me-2">Редактировать</button>
+                            <button class="btn btn-danger">Удалить</button>
+                        </div>
                     </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="categories p-3 border border-secondary rounded-3">
+                        <h2 class="mb-2 fs-3">Здоровье</h2>
+                        <div class="d-flex">
+                            <button class="btn btn-primary me-2">Редактировать</button>
+                            <button class="btn btn-danger">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="categories p-3 border border-secondary rounded-3">
+                        <h2 class="mb-2 fs-3">Кафе</h2>
+                        <div class="d-flex">
+                            <button class="btn btn-primary me-2">Редактировать</button>
+                            <button class="btn btn-danger">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="categories p-3 border border-secondary rounded-3">
+                        <h2 class="mb-2 fs-3">Авто</h2>
+                        <div class="d-flex">
+                            <button class="btn btn-primary me-2">Редактировать</button>
+                            <button class="btn btn-danger">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="categories p-3 border border-secondary rounded-3">
+                        <h2 class="mb-2 fs-3">Одежда</h2>
+                        <div class="d-flex">
+                            <button class="btn btn-primary me-2">Редактировать</button>
+                            <button class="btn btn-danger">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="categories p-3 border border-secondary rounded-3">
+                        <h2 class="mb-2 fs-3">Развлечение</h2>
+                        <div class="d-flex">
+                            <button class="btn btn-primary me-2">Редактировать</button>
+                            <button class="btn btn-danger">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="categories p-3 border border-secondary rounded-3">
+                        <h2 class="mb-2 fs-3">Счета</h2>
+                        <div class="d-flex">
+                            <button class="btn btn-primary me-2">Редактировать</button>
+                            <button class="btn btn-danger">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="categories p-3 border border-secondary rounded-3">
+                        <h2 class="mb-2 fs-3">Спорт</h2>
+                        <div class="d-flex">
+                            <button class="btn btn-primary me-2">Редактировать</button>
+                            <button class="btn btn-danger">Удалить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <a href="categories-expense-created.html" class="categories add-link p-3 border border-secondary rounded-3 d-flex align-items-center justify-content-center text-decoration-none">
+                        <span class="text-secondary fs-3">+</span>
+                    </a>
                 </div>
             </div>
         </div>
     </main>
 </div>
 
+
+<div class="popup-container w-100 h-100 position-fixed left-0 top-0 d-flex align-items-center justify-content-center d-none">
+    <div class="popup d-flex flex-column align-items-center justify-content-center bg-white rounded-4">
+        <div class="popup-text mb-3 text-center fs-5">Вы действительно хотите удалить категорию?</div>
+        <div class="d-flex mt-1">
+            <button class="btn btn-success me-2">Да, удалить</button>
+            <button class="btn btn-danger ms-1">Не удалять</button>
+        </div>
+    </div>
+
+</div>
+
+
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-<script src="node_modules/chart.js/dist/chart.umd.js"></script>
-
-<script>
-    const colors = {
-        red: '#E0435E',
-        orange: '#F59E32',
-        yellow: '#FACC15',
-        green: '#2DD4BF',
-        blue: '#2563EB'
-    };
-
-    const legendSpacingPlugin = {
-        beforeInit(chart) {
-            // Сохраняем оригинальную функцию fit
-            const originalFit = chart.legend.fit;
-
-            // Переопределяем её
-            chart.legend.fit = function fit() {
-                // Вызываем оригинальную функцию
-                originalFit.bind(chart.legend)();
-                // Добавляем нужный отступ (40px)
-                this.height += 40;
-            }
-        }
-    };
-
-    const resizePlugin = {
-        afterInit(chart) {
-            // Устанавливаем точные размеры canvas
-            chart.resize(437, 467);
-        }
-    };
-
-    const incomeData = {
-        labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-        datasets: [{
-            data: [30, 40, 15, 10, 5],
-            backgroundColor: Object.values(colors),
-            borderWidth: 2,
-            borderColor: '#ffffff'
-        }]
-    };
-
-    const expenseData = {
-        labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-        datasets: [{
-            data: [5, 10, 30, 30, 25],
-            backgroundColor: Object.values(colors),
-            borderWidth: 2,
-            borderColor: '#ffffff'
-        }]
-    };
-
-    // Общие настройки с заголовком
-    const createOptions = (titleText) => ({
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                display: true,
-                position: 'top',
-                labels: {
-                    boxWidth: 35,
-                    boxHeight: 10,
-                    padding: 10,
-                    font: {
-                        family: "'roboto-medium', sans-serif",
-                        size: 12,
-                    },
-                    color: '#000000',
-                }
-            },
-            title: {
-                display: true,
-                text: titleText,
-                font: {
-                    family: "'roboto-medium', sans-serif",
-                    size: 28
-                },
-                color: '#4c1d95',
-                padding: {
-                    bottom: 20
-                }
-            }
-        }
-    });
-
-    // Создаем графики с разными заголовками
-    new Chart(document.getElementById('income-chart'), {
-        type: 'pie',
-        data: incomeData,
-        options: createOptions('Доходы'),
-        plugins: [legendSpacingPlugin, resizePlugin]
-    });
-
-    new Chart(document.getElementById('expense-chart'), {
-        type: 'pie',
-        data: expenseData,
-        options: createOptions('Расходы'),
-        plugins: [legendSpacingPlugin, resizePlugin]
-    });
-
-    // document.getElementById('income-chart').style.width = '437px';
-    // document.getElementById('income-chart').style.height = '467px';
-    // document.getElementById('expense-chart').style.width = '437px';
-    // document.getElementById('expense-chart').style.height = '467px';
-
-</script>
 
 </body>
 </html>

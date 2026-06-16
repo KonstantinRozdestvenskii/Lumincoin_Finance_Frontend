@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Главная | Luminincoin Finance</title>
+    <title>Доходы и расходы | Luminincoin Finance</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="src/css/common.css">
-    <link rel="stylesheet" href="src/css/index.css">
 </head>
 <body>
 <div class="d-flex vh-100">
@@ -18,7 +17,7 @@
         <div class="flex-grow-1 overflow-auto py-5 px-3">
             <ul class="nav nav-pills flex-column mb-0">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link d-flex align-items-center active" aria-current="page">
+                    <a href="index.html" class="nav-link d-flex align-items-center" aria-current="page">
                         <svg class="me-2" width="15" height="14" viewBox="0 0 15 14" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -35,7 +34,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="incomes_and_expense.html" class="nav-link d-flex align-items-center">
+                    <a href="incomes_and_expense.html" class="nav-link d-flex align-items-center active">
                         <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -88,146 +87,12 @@
     </nav>
     <main class="main-content flex-grow-1">
         <div class="container-fluid px-5 py-5">
-            <h1 class="ms-2 mb-4 pb-2 mt-5">Главная</h1>
-            <div class="d-flex align-items-center ms-2 pb-5 mb-5">
-                <button class="btn btn-secondary me-1">Сегодня</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Неделя</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Месяц</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Год</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Все</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Интервал</button>
-                <div class="ms-3">
-                    <span class="me-1">с</span>
-                    <input type="date" class="date-input border-0 border-bottom border-secondary p-0 text-secondary">
-                    <span class="ms-3 me-1">по</span>
-                    <input type="date" class="date-input border-0 border-bottom border-secondary p-0 text-secondary">
-                </div>
-            </div>
-            <div class="charts d-flex my-5 pt-4">
-                <div>
-                    <div class="chart-container ps-4 me-5">
-                        <canvas id="income-chart"></canvas>
-                    </div>
-                </div>
-                <div>
-                    <div class="chart-container ms-5 ps-4">
-                        <canvas id="expense-chart"></canvas>
-                    </div>
-                </div>
-            </div>
+            <h1 class="mb-4 pb-3">Доходы и расходы</h1>
         </div>
     </main>
 </div>
 
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-<script src="node_modules/chart.js/dist/chart.umd.js"></script>
-
-<script>
-    const colors = {
-        red: '#E0435E',
-        orange: '#F59E32',
-        yellow: '#FACC15',
-        green: '#2DD4BF',
-        blue: '#2563EB'
-    };
-
-    const legendSpacingPlugin = {
-        beforeInit(chart) {
-            // Сохраняем оригинальную функцию fit
-            const originalFit = chart.legend.fit;
-
-            // Переопределяем её
-            chart.legend.fit = function fit() {
-                // Вызываем оригинальную функцию
-                originalFit.bind(chart.legend)();
-                // Добавляем нужный отступ (40px)
-                this.height += 40;
-            }
-        }
-    };
-
-    const resizePlugin = {
-        afterInit(chart) {
-            // Устанавливаем точные размеры canvas
-            chart.resize(437, 467);
-        }
-    };
-
-    const incomeData = {
-        labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-        datasets: [{
-            data: [30, 40, 15, 10, 5],
-            backgroundColor: Object.values(colors),
-            borderWidth: 2,
-            borderColor: '#ffffff'
-        }]
-    };
-
-    const expenseData = {
-        labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-        datasets: [{
-            data: [5, 10, 30, 30, 25],
-            backgroundColor: Object.values(colors),
-            borderWidth: 2,
-            borderColor: '#ffffff'
-        }]
-    };
-
-    // Общие настройки с заголовком
-    const createOptions = (titleText) => ({
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                display: true,
-                position: 'top',
-                labels: {
-                    boxWidth: 35,
-                    boxHeight: 10,
-                    padding: 10,
-                    font: {
-                        family: "'roboto-medium', sans-serif",
-                        size: 12,
-                    },
-                    color: '#000000',
-                }
-            },
-            title: {
-                display: true,
-                text: titleText,
-                font: {
-                    family: "'roboto-medium', sans-serif",
-                    size: 28
-                },
-                color: '#4c1d95',
-                padding: {
-                    bottom: 20
-                }
-            }
-        }
-    });
-
-    // Создаем графики с разными заголовками
-    new Chart(document.getElementById('income-chart'), {
-        type: 'pie',
-        data: incomeData,
-        options: createOptions('Доходы'),
-        plugins: [legendSpacingPlugin, resizePlugin]
-    });
-
-    new Chart(document.getElementById('expense-chart'), {
-        type: 'pie',
-        data: expenseData,
-        options: createOptions('Расходы'),
-        plugins: [legendSpacingPlugin, resizePlugin]
-    });
-
-    // document.getElementById('income-chart').style.width = '437px';
-    // document.getElementById('income-chart').style.height = '467px';
-    // document.getElementById('expense-chart').style.width = '437px';
-    // document.getElementById('expense-chart').style.height = '467px';
-
-</script>
 
 </body>
 </html>

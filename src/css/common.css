@@ -16,8 +16,13 @@
     margin-left: 219px;
 }
 
-.body {
+* {
     font-family: 'roboto-regular', sans-serif;
+}
+
+h1 {
+    font-family: 'roboto-medium', sans-serif;
+    color: #052C65;
 }
 
 nav a {
@@ -75,4 +80,27 @@ li.nav-item {
 
 .dropdown a:first-child::after {
     content: none;
+}
+
+.btn {
+    font-family: 'roboto-medium', sans-serif;
+    font-size: 14px;
+}
+
+.popup {
+    width: 530px;
+    height: 161px;
+}
+
+.popup-text {
+    max-width: 450px;
+    color: #290661;
+}
+
+.popup-container {
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.form-control::placeholder {
+    color: #6C757D;
 }
