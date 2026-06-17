@@ -90,13 +90,21 @@
         <div class="container-fluid px-5 py-5">
             <h1 class="mb-4 pb-3 mt-5 pt-1 mx-2 px-1">Редактирование дохода/расхода</h1>
             <form class="form mx-2 px-1 mb-5 pb-1">
-                <input class="form-control w-100 px-3 py-2 mb-2" type="text" placeholder="Тип..." value="Доход">
-                <input class="form-control w-100 px-3 py-2 mb-2" type="text" placeholder="Категория..." value="Зарплата">
-                <input class="form-control w-100 px-3 py-2 mb-2" type="text" placeholder="Сумма в $..." value="500$">
-                <input class="form-control w-100 px-3 py-2 mb-2" type="text" placeholder="Дата..." value="11.09.2022">
+                <select class="form-select w-100 px-3 py-2 mb-2" type="text">
+                    <option selected>Доход</option>
+                    <option>Расход</option>
+                </select>
+                <select class="form-select w-100 px-3 py-2 mb-2" type="text">
+                    <option>Депозиты</option>
+                    <option selected>Зарплата</option>
+                    <option>Сбережения</option>
+                    <option>Инвестиции</option>
+                </select>
+                <input class="form-control w-100 px-3 py-2 mb-2" type="number" placeholder="Сумма в $..." value="500">
+                <input class="form-control w-100 px-3 py-2 mb-2" type="date" placeholder="Дата..." value="2022-09-11">
                 <textarea class="form-control w-100 px-3 py-2" placeholder="Комментарий..."></textarea>
                 <div class="d-flex align-items-center pt-3 mt-1">
-                    <button class="btn btn-success me-2">Сохранить</button>
+                    <button class="btn btn-success me-2">Создать</button>
                     <button class="btn btn-danger">Отмена</button>
                 </div>
             </form>

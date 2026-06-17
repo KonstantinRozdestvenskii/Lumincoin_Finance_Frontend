@@ -109,3 +109,7 @@ li.nav-item {
 .form-control::placeholder {
     color: #6C757D;
 }
+
+.form-control[type="date"]:focus {
+    outline: none;
+}
