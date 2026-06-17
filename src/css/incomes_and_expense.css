@@ -1,0 +1,8 @@
+.table th {
+    font-family: 'roboto-bold', sans-serif;
+    color: #052C65;
+}
+
+.table th[scope="row"] {
+    color: black;
+}

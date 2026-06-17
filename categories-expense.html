@@ -55,14 +55,21 @@
                     <a class="nav-link btn-toggle d-flex align-items-center justify-content-between rounded-0 active"
                        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                         Категории
-                        <svg class="toggle-arrow" width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.146894 12.8546C0.0528521 12.7608 0 12.6335 0 12.5006C0 12.3678 0.0528521 12.2404 0.146894 12.1466L5.79389 6.50064L0.146894 0.854643C0.0204218 0.72817 -0.0289712 0.543834 0.0173208 0.37107C0.0636128 0.198306 0.198557 0.0633621 0.371321 0.0170698C0.544085 -0.0292225 0.728422 0.0201702 0.854894 0.146643L6.85489 6.14664C6.94894 6.24045 7.00179 6.36782 7.00179 6.50064C7.00179 6.63347 6.94894 6.76084 6.85489 6.85464L0.854894 12.8546C0.76109 12.9487 0.633721 13.0015 0.500894 13.0015C0.368066 13.0015 0.240698 12.9487 0.146894 12.8546Z" fill="#052C65"/>
+                        <svg class="toggle-arrow" width="7" height="13" viewBox="0 0 7 13" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M0.146894 12.8546C0.0528521 12.7608 0 12.6335 0 12.5006C0 12.3678 0.0528521 12.2404 0.146894 12.1466L5.79389 6.50064L0.146894 0.854643C0.0204218 0.72817 -0.0289712 0.543834 0.0173208 0.37107C0.0636128 0.198306 0.198557 0.0633621 0.371321 0.0170698C0.544085 -0.0292225 0.728422 0.0201702 0.854894 0.146643L6.85489 6.14664C6.94894 6.24045 7.00179 6.36782 7.00179 6.50064C7.00179 6.63347 6.94894 6.76084 6.85489 6.85464L0.854894 12.8546C0.76109 12.9487 0.633721 13.0015 0.500894 13.0015C0.368066 13.0015 0.240698 12.9487 0.146894 12.8546Z"
+                                  fill="#052C65"/>
                         </svg>
                     </a>
                     <div class="collapse show" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal small">
-                            <li class="nav-item"><a href="categories-income.html" class="nav-link d-flex text-decoration-none rounded-0">Доходы</a></li>
-                            <li class="nav-item"><a href="categories-expense.html" class="nav-link d-flex text-decoration-none rounded-0 active">Расходы</a></li>
+                            <li class="nav-item"><a href="categories-income.html"
+                                                    class="nav-link d-flex text-decoration-none rounded-0">Доходы</a>
+                            </li>
+                            <li class="nav-item"><a href="categories-expense.html"
+                                                    class="nav-link d-flex text-decoration-none rounded-0 active">Расходы</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -88,101 +95,103 @@
     </nav>
     <main class="main-content flex-grow-1">
         <div class="container-fluid px-5 py-5">
-            <h1 class="mb-4 pb-3">Расходы</h1>
-            <div class="row gy-3 gx-3">
+            <h1 class="mb-4 pb-3 mt-5 pt-1 mx-2 px-1">Расходы</h1>
+            <div class="mx-2 px-1 mb-5 pb-1">
+                <div class="row gy-3 gx-3">
+                    <div class="col-4">
+                        <div class="categories p-3 border border-secondary rounded-3">
+                            <h2 class="mb-2 fs-3">Еда</h2>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-2">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="col-4">
-                    <div class="categories p-3 border border-secondary rounded-3">
-                        <h2 class="mb-2 fs-3">Еда</h2>
-                        <div class="d-flex">
-                            <button class="btn btn-primary me-2">Редактировать</button>
-                            <button class="btn btn-danger">Удалить</button>
+                    <div class="col-4">
+                        <div class="categories p-3 border border-secondary rounded-3">
+                            <h2 class="mb-2 fs-3">Жильё</h2>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-2">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-4">
-                    <div class="categories p-3 border border-secondary rounded-3">
-                        <h2 class="mb-2 fs-3">Жильё</h2>
-                        <div class="d-flex">
-                            <button class="btn btn-primary me-2">Редактировать</button>
-                            <button class="btn btn-danger">Удалить</button>
+                    <div class="col-4">
+                        <div class="categories p-3 border border-secondary rounded-3">
+                            <h2 class="mb-2 fs-3">Здоровье</h2>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-2">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-4">
-                    <div class="categories p-3 border border-secondary rounded-3">
-                        <h2 class="mb-2 fs-3">Здоровье</h2>
-                        <div class="d-flex">
-                            <button class="btn btn-primary me-2">Редактировать</button>
-                            <button class="btn btn-danger">Удалить</button>
+                    <div class="col-4">
+                        <div class="categories p-3 border border-secondary rounded-3">
+                            <h2 class="mb-2 fs-3">Кафе</h2>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-2">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-4">
-                    <div class="categories p-3 border border-secondary rounded-3">
-                        <h2 class="mb-2 fs-3">Кафе</h2>
-                        <div class="d-flex">
-                            <button class="btn btn-primary me-2">Редактировать</button>
-                            <button class="btn btn-danger">Удалить</button>
+                    <div class="col-4">
+                        <div class="categories p-3 border border-secondary rounded-3">
+                            <h2 class="mb-2 fs-3">Авто</h2>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-2">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-4">
-                    <div class="categories p-3 border border-secondary rounded-3">
-                        <h2 class="mb-2 fs-3">Авто</h2>
-                        <div class="d-flex">
-                            <button class="btn btn-primary me-2">Редактировать</button>
-                            <button class="btn btn-danger">Удалить</button>
+                    <div class="col-4">
+                        <div class="categories p-3 border border-secondary rounded-3">
+                            <h2 class="mb-2 fs-3">Одежда</h2>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-2">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-4">
-                    <div class="categories p-3 border border-secondary rounded-3">
-                        <h2 class="mb-2 fs-3">Одежда</h2>
-                        <div class="d-flex">
-                            <button class="btn btn-primary me-2">Редактировать</button>
-                            <button class="btn btn-danger">Удалить</button>
+                    <div class="col-4">
+                        <div class="categories p-3 border border-secondary rounded-3">
+                            <h2 class="mb-2 fs-3">Развлечение</h2>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-2">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-4">
+                        <div class="categories p-3 border border-secondary rounded-3">
+                            <h2 class="mb-2 fs-3">Счета</h2>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-2">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="categories p-3 border border-secondary rounded-3">
+                            <h2 class="mb-2 fs-3">Спорт</h2>
+                            <div class="d-flex">
+                                <button class="btn btn-primary me-2">Редактировать</button>
+                                <button class="btn btn-danger">Удалить</button>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="col-4">
-                    <div class="categories p-3 border border-secondary rounded-3">
-                        <h2 class="mb-2 fs-3">Развлечение</h2>
-                        <div class="d-flex">
-                            <button class="btn btn-primary me-2">Редактировать</button>
-                            <button class="btn btn-danger">Удалить</button>
-                        </div>
+                    <div class="col-4">
+                        <a href="categories-expense-created.html"
+                           class="categories add-link p-3 border border-secondary rounded-3 d-flex align-items-center justify-content-center text-decoration-none">
+                            <span class="text-secondary fs-3">+</span>
+                        </a>
                     </div>
-                </div>
-                <div class="col-4">
-                    <div class="categories p-3 border border-secondary rounded-3">
-                        <h2 class="mb-2 fs-3">Счета</h2>
-                        <div class="d-flex">
-                            <button class="btn btn-primary me-2">Редактировать</button>
-                            <button class="btn btn-danger">Удалить</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="categories p-3 border border-secondary rounded-3">
-                        <h2 class="mb-2 fs-3">Спорт</h2>
-                        <div class="d-flex">
-                            <button class="btn btn-primary me-2">Редактировать</button>
-                            <button class="btn btn-danger">Удалить</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-4">
-                    <a href="categories-expense-created.html" class="categories add-link p-3 border border-secondary rounded-3 d-flex align-items-center justify-content-center text-decoration-none">
-                        <span class="text-secondary fs-3">+</span>
-                    </a>
                 </div>
             </div>
         </div>
@@ -198,7 +207,6 @@
             <button class="btn btn-danger ms-1">Не удалять</button>
         </div>
     </div>
-
 </div>
 
 

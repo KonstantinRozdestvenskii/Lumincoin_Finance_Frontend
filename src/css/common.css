@@ -8,6 +8,11 @@
     src: url('../fonts/Roboto_Medium.ttf');
 }
 
+@font-face {
+    font-family: 'roboto-bold';
+    src: url('../fonts/Roboto_Bold.ttf');
+}
+
 .sidebar {
     width: 219px;
 }

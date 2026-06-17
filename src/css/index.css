@@ -13,3 +13,7 @@ body {
 .container {
     box-sizing: border-box;
 }
+
+.form {
+    margin-bottom: 140px;
+}
