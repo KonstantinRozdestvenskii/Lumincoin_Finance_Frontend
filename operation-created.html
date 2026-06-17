@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Категории доходов | Luminincoin Finance</title>
+    <title>Создание категории доходов | Luminincoin Finance</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="src/css/common.css">
-    <link rel="stylesheet" href="src/css/categories.css">
+    <link rel="stylesheet" href="src/css/operation-created.css">
 </head>
 <body>
 
@@ -51,7 +51,7 @@
                         Доходы & Расходы
                     </a>
                 </li>
-                <li class="nav-item  active">
+                <li class="nav-item active">
                     <a class="nav-link btn-toggle d-flex align-items-center justify-content-between rounded-0 active"
                        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                         Категории
@@ -88,69 +88,21 @@
     </nav>
     <main class="main-content flex-grow-1">
         <div class="container-fluid px-5 py-5">
-            <h1 class="mb-4 pb-3 mt-5 pt-1 mx-2 px-1">Доходы</h1>
-            <div class="mx-2 px-1 mb-5 pb-1">
-                <div class="row gy-3 gx-3">
-                    <div class="col-4">
-                        <div class="categories p-3 border border-secondary rounded-3">
-                            <h2 class="mb-2 fs-3">Депозиты</h2>
-                            <div class="d-flex">
-                                <button class="btn btn-primary me-2">Редактировать</button>
-                                <button class="btn btn-danger">Удалить</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="categories p-3 border border-secondary rounded-3">
-                            <h2 class="mb-2 fs-3">Зарплата</h2>
-                            <div class="d-flex">
-                                <button class="btn btn-primary me-2">Редактировать</button>
-                                <button class="btn btn-danger">Удалить</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="categories p-3 border border-secondary rounded-3">
-                            <h2 class="mb-2 fs-3">Сбережения</h2>
-                            <div class="d-flex">
-                                <button class="btn btn-primary me-2">Редактировать</button>
-                                <button class="btn btn-danger">Удалить</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="categories p-3 border border-secondary rounded-3">
-                            <h2 class="mb-2 fs-3">Инвестиции</h2>
-                            <div class="d-flex">
-                                <button class="btn btn-primary me-2">Редактировать</button>
-                                <button class="btn btn-danger">Удалить</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <a href="categories-income-created.html" class="categories add-link p-3 border border-secondary rounded-3 d-flex align-items-center justify-content-center text-decoration-none">
-                            <span class="text-secondary fs-3">+</span>
-                        </a>
-                    </div>
+            <h1 class="mb-4 pb-3 mt-5 pt-1 mx-2 px-1">Создание категории доходов</h1>
+            <form class="form mx-2 px-1 mb-5 pb-1">
+                <input class="form-control w-100 px-3 py-2 mb-2" type="text" placeholder="Тип...">
+                <input class="form-control w-100 px-3 py-2 mb-2" type="text" placeholder="Категория...">
+                <input class="form-control w-100 px-3 py-2 mb-2" type="text" placeholder="Сумма в $...">
+                <input class="form-control w-100 px-3 py-2 mb-2" type="text" placeholder="Дата...">
+                <textarea class="form-control w-100 px-3 py-2" placeholder="Комментарий..."></textarea>
+                <div class="d-flex align-items-center pt-3 mt-1">
+                    <button class="btn btn-success me-2">Создать</button>
+                    <button class="btn btn-danger">Отмена</button>
                 </div>
-            </div>
+            </form>
         </div>
     </main>
 </div>
-
-
-<div class="popup-container w-100 h-100 position-fixed left-0 top-0 d-flex align-items-center justify-content-center d-none">
-    <div class="popup popup-income d-flex flex-column align-items-center justify-content-center bg-white rounded-4">
-        <div class="popup-text mb-3 text-center fs-5">Вы действительно хотите удалить категорию? Связанные доходы останутся без категории.</div>
-        <div class="d-flex mt-1">
-            <button class="btn btn-success me-2">Да, удалить</button>
-            <button class="btn btn-danger ms-1">Не удалять</button>
-        </div>
-    </div>
-
-</div>
-
 
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
