@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Создание операции | Luminincoin Finance</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/flatpickr/dist/flatpickr.css">
     <link rel="stylesheet" href="src/css/common.css">
     <link rel="stylesheet" href="src/css/operation-created.css">
 </head>
@@ -111,7 +113,11 @@
                     </div>
                 </div>
                 <div class="input-group w-100 mb-2">
-                    <input class="form-control" type="date" id="date">
+                    <input type="text"
+                           class="form-control"
+                           id="date"
+                           placeholder="Дата..."
+                           autocomplete="off">
                     <div id="dateFeedback" class="invalid-feedback">
                         Введите дату
                     </div>
@@ -132,6 +138,16 @@
 </div>
 
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="node_modules/flatpickr/dist/flatpickr.min.js"></script>
+<script src="node_modules/flatpickr/dist/l10n/ru.js"></script>
+<script>
+    flatpickr('#date', {
+        locale: 'ru',
+        dateFormat: 'd.m.Y',
+        allowInput: false,
+        position: 'auto',
+    });
+</script>
 
 </body>
 </html>

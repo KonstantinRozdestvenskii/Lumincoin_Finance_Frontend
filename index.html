@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная | Luminincoin Finance</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/flatpickr/dist/flatpickr.css">
     <link rel="stylesheet" href="src/css/common.css">
     <link rel="stylesheet" href="src/css/index.css">
+
 </head>
 <body>
 <div class="d-flex vh-100">
@@ -89,28 +92,30 @@
     <main class="main-content flex-grow-1">
         <div class="container-fluid px-5 py-5">
             <h1 class="mx-2 px-1 mb-4 pb-2 mt-5 pt-1">Главная</h1>
-            <div class="form d-flex align-items-center mx-2 px-1">
+            <div class="form d-flex flex-wrap align-items-center mx-2 px-1">
                 <button class="btn btn-secondary me-1 ">Сегодня</button>
                 <button class="btn btn-outline-secondary ms-3 me-1">Неделя</button>
                 <button class="btn btn-outline-secondary ms-3 me-1">Месяц</button>
                 <button class="btn btn-outline-secondary ms-3 me-1">Год</button>
                 <button class="btn btn-outline-secondary ms-3 me-1">Все</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Интервал</button>
                 <div class="ms-3">
+                    <button class="btn btn-outline-secondary me-1">Интервал</button>
                     <span class="me-1">с</span>
-                    <input type="date" class="date-input border-0 border-bottom border-secondary p-0 text-secondary">
+                    <input type="text" class="date-input border-0 border-bottom border-secondary p-0 text-secondary"
+                           placeholder="дд.мм.гггг" readonly>
                     <span class="ms-3 me-1">по</span>
-                    <input type="date" class="date-input border-0 border-bottom border-secondary p-0 text-secondary">
+                    <input type="text" class="date-input border-0 border-bottom border-secondary p-0 text-secondary"
+                           placeholder="дд.мм.гггг" readonly>
                 </div>
             </div>
-            <div class="charts d-flex mb-5 pb-1">
+            <div class="charts d-flex flex-column align-items-center flex-xxl-row mb-5 pb-1">
                 <div>
-                    <div class="chart-container ps-4 me-5">
+                    <div class="chart-container mb-4 pb-3 ps-xxl-4 me-xxl-5">
                         <canvas id="income-chart"></canvas>
                     </div>
                 </div>
                 <div>
-                    <div class="chart-container ms-5 ps-4">
+                    <div class="chart-container ms-xxl-5 ps-xxl-4">
                         <canvas id="expense-chart"></canvas>
                     </div>
                 </div>
@@ -121,7 +126,18 @@
 
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 <script src="node_modules/chart.js/dist/chart.umd.js"></script>
-
+<script src="node_modules/flatpickr/dist/flatpickr.min.js"></script>
+<script src="node_modules/flatpickr/dist/l10n/ru.js"></script>
+<script>
+    // Инициализация Flatpickr для всех date-input
+    flatpickr('.date-input', {
+        locale: 'ru',           // Русский язык
+        dateFormat: 'd.m.Y',    // Формат дд.мм.гггг
+        allowInput: false,      // Только через календарь
+        position: 'auto',       // Автоматическое позиционирование
+        static: false           // Позиционируется относительно input
+    });
+</script>
 <script>
     const colors = {
         red: '#E0435E',
@@ -175,7 +191,7 @@
 
     // Общие настройки с заголовком
     const createOptions = (titleText) => ({
-        responsive: true,
+        responsive: false,
         maintainAspectRatio: false,
         plugins: {
             legend: {
