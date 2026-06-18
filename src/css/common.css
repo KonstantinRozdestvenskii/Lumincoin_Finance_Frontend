@@ -13,14 +13,9 @@
     src: url('../fonts/Roboto_Bold.ttf');
 }
 
-.sidebar {
-    width: 219px;
-}
-
-.main-content {
-    margin-left: 219px;
-}
-
+/* ========================================
+   БАЗОВЫЕ СТИЛИ (мобильные)
+   ======================================== */
 * {
     font-family: 'roboto-regular', sans-serif;
 }
@@ -36,7 +31,6 @@ nav a {
     color: #052C65;
 }
 
-
 li.nav-item {
     font-size: 14px;
 }
@@ -45,23 +39,92 @@ li.nav-item {
     color: #052C65;
 }
 
-/* Рамка и скругление ТОЛЬКО для активного li */
-.nav-item.active {
-    border: 1px solid #0d6efd !important;
-    border-radius: 4px !important;
-    overflow: hidden;
+/* Сайдбар */
+.sidebar {
+    width: 219px;
 }
 
+/* Основной контент */
+.main-content {
+    margin-left: 0;
+}
 
+/* SVG иконки */
 .nav-link svg, .nav-link path {
-    fill: #052C65
+    fill: #052C65;
 }
 
-.nav-link.active svg, .nav-link.active path {
+.nav-link.active svg, .nav-link.active path,
+.nav-link.bg-primary svg, .nav-link.bg-primary path {
     fill: white;
 }
 
+/* ========================================
+   ЕДИНЫЙ КЛАСС ДЛЯ АКТИВНОГО ПУНКТА МЕНЮ
+   ======================================== */
 
+/* Рамка для активного li (сайдбар и offcanvas) */
+.nav-item.menu-active {
+    border: 1px solid #0d6efd !important;
+    border-radius: 4px !important;
+}
+
+/* Для сайдбара - overflow hidden */
+@media screen and (min-width: 768px) {
+    .sidebar .nav-item.menu-active {
+        overflow: hidden;
+    }
+}
+
+/* Для offcanvas - overflow hidden */
+.offcanvas .nav-item.menu-active {
+    overflow: hidden;
+}
+
+/* ========================================
+   СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ КАТЕГОРИЙ (ХЕДЕР)
+   ======================================== */
+
+/* Обёртка в хедере - только ширина */
+.category-menu-wrapper {
+    width: 115px;
+}
+
+/* Для хедера - ширина кнопки 100% */
+.category-menu-wrapper > .nav-link.btn-toggle {
+    width: 100% !important;
+    border-radius: 4px 4px 0 0 !important;
+}
+
+/* Позиционирование выпадающего меню */
+.category-dropdown {
+    position: absolute;
+    top: 100%;
+    left: -1px;
+    right: -1px;
+    width: calc(100% + 2px) !important;
+    z-index: 1030;
+}
+
+/* Убираем скругления у пунктов меню внутри dropdown */
+.category-dropdown .nav-link {
+    border-radius: 0 !important;
+    transition: background-color 0.2s ease;
+}
+
+.category-dropdown .nav-link:hover {
+    background-color: #f8f9fa;
+}
+
+/* Вложенные nav-link в btn-toggle-nav */
+.btn-toggle-nav .nav-link {
+    padding: 0.5rem 1rem;
+    color: #052C65;
+}
+
+/* ========================================
+   АНИМАЦИЯ СТРЕЛКИ
+   ======================================== */
 .toggle-arrow {
     transition: transform 0.35s ease;
     transform-origin: center;
@@ -71,6 +134,9 @@ li.nav-item {
     transform: rotate(90deg);
 }
 
+/* ========================================
+   ДОПОЛНИТЕЛЬНЫЕ СТИЛИ
+   ======================================== */
 .scrollarea {
     overflow-y: auto;
 }
@@ -112,4 +178,13 @@ li.nav-item {
 
 .form-control[type="date"]:focus {
     outline: none;
+}
+
+/* ========================================
+   АДАПТИВНЫЕ СТИЛИ (≥ 768px — md breakpoint)
+   ======================================== */
+@media screen and (min-width: 768px) {
+    .main-content {
+        margin-left: 219px;
+    }
 }

@@ -11,60 +11,46 @@
 
 </head>
 <body>
-<div class="d-flex vh-100">
+<div class="vh-100">
     <!-- САЙДБАР — фиксированный -->
-    <nav class="sidebar d-flex flex-column border-end position-fixed top-0 start-0 vh-100 overflow-hidden">
+    <nav class="sidebar d-none d-md-flex flex-column border-end position-fixed top-0 start-0 vh-100 overflow-hidden">
         <div class="flex-shrink-0 px-5 py-3 border-bottom">
-            <img src="src/images/logo.png" alt="логотип"
-                 style="width: 98px; height: 40px">
+            <img src="src/images/logo.png" alt="логотип" style="width: 98px; height: 40px">
         </div>
         <div class="flex-grow-1 overflow-auto py-5 px-3">
             <ul class="nav nav-pills flex-column mb-0">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link d-flex align-items-center active" aria-current="page">
-                        <svg class="me-2" width="15" height="14" viewBox="0 0 15 14" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M1.5 12.2929V5.79289H2.5V12.2929C2.5 12.569 2.72386 12.7929 3 12.7929H12C12.2761 12.7929 12.5 12.569 12.5 12.2929V5.79289H13.5V12.2929C13.5 13.1213 12.8284 13.7929 12 13.7929H3C2.17157 13.7929 1.5 13.1213 1.5 12.2929Z"
-                                  fill="white"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M12.5 1.29289V4.79289L10.5 2.79289V1.29289C10.5 1.01675 10.7239 0.792893 11 0.792893H12C12.2761 0.792893 12.5 1.01675 12.5 1.29289Z"
-                                  fill="white"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M6.79289 0.292893C7.18342 -0.0976322 7.81658 -0.0976301 8.20711 0.292893L14.8536 6.93934C15.0488 7.1346 15.0488 7.45118 14.8536 7.64645C14.6583 7.84171 14.3417 7.84171 14.1464 7.64645L7.5 1L0.853553 7.64645C0.658291 7.84171 0.341709 7.84171 0.146447 7.64645C-0.0488155 7.45118 -0.0488155 7.1346 0.146447 6.93934L6.79289 0.292893Z"
-                                  fill="white"/>
+                        <svg class="me-2" width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 12.2929V5.79289H2.5V12.2929C2.5 12.569 2.72386 12.7929 3 12.7929H12C12.2761 12.7929 12.5 12.569 12.5 12.2929V5.79289H13.5V12.2929C13.5 13.1213 12.8284 13.7929 12 13.7929H3C2.17157 13.7929 1.5 13.1213 1.5 12.2929Z" fill="white"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 1.29289V4.79289L10.5 2.79289V1.29289C10.5 1.01675 10.7239 0.792893 11 0.792893H12C12.2761 0.792893 12.5 1.01675 12.5 1.29289Z" fill="white"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.79289 0.292893C7.18342 -0.0976322 7.81658 -0.0976301 8.20711 0.292893L14.8536 6.93934C15.0488 7.1346 15.0488 7.45118 14.8536 7.64645C14.6583 7.84171 14.3417 7.84171 14.1464 7.64645L7.5 1L0.853553 7.64645C0.658291 7.84171 0.341709 7.84171 0.146447 7.64645C-0.0488155 7.45118 -0.0488155 7.1346 0.146447 6.93934L6.79289 0.292893Z" fill="white"/>
                         </svg>
                         Главная
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="operation.html" class="nav-link d-flex align-items-center">
-                        <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M11 15C13.2091 15 15 13.2091 15 11C15 8.79086 13.2091 7 11 7C8.79086 7 7 8.79086 7 11C7 13.2091 8.79086 15 11 15ZM16 11C16 13.7614 13.7614 16 11 16C8.23858 16 6 13.7614 6 11C6 8.23858 8.23858 6 11 6C13.7614 6 16 8.23858 16 11Z"
-                                  fill="#052C65"/>
-                            <path d="M9.4375 11.9444C9.48519 12.5403 9.95568 13.0049 10.8013 13.0599V13.5H11.1764V13.0568C12.0507 12.9957 12.5625 12.5281 12.5625 11.8496C12.5625 11.2323 12.1715 10.9144 11.4721 10.7494L11.1764 10.6791V9.48105C11.5516 9.52384 11.79 9.72861 11.8472 10.0128H12.5053C12.4576 9.43826 11.9648 8.989 11.1764 8.9401V8.5H10.8013V8.94927C10.0542 9.02262 9.54559 9.47188 9.54559 10.1076C9.54559 10.6699 9.92389 11.0275 10.5533 11.1742L10.8013 11.2353V12.5067C10.4166 12.4487 10.1623 12.2378 10.1051 11.9444H9.4375ZM10.7981 10.5905C10.4294 10.5049 10.2291 10.3307 10.2291 10.0678C10.2291 9.77445 10.4453 9.5544 10.8013 9.49022V10.5905H10.7981ZM11.2305 11.3362C11.6787 11.4401 11.8854 11.6082 11.8854 11.9046C11.8854 12.2439 11.6279 12.4762 11.1764 12.5189V11.324L11.2305 11.3362Z"
-                                  fill="#052C65"/>
-                            <path d="M1 0C0.447715 0 0 0.447716 0 1V9C0 9.55229 0.447715 10 1 10H5.08296C5.1407 9.65585 5.22773 9.32163 5.34141 9H3C3 7.89543 2.10457 7 1 7V3C2.10457 3 3 2.10457 3 1H13C13 2.10457 13.8954 3 15 3V6.52779C15.3801 6.86799 15.7166 7.25594 16 7.68221V1C16 0.447715 15.5523 0 15 0H1Z"
-                                  fill="#052C65"/>
-                            <path d="M9.9983 5.08325C9.99943 5.05564 10 5.02789 10 5C10 3.89543 9.10457 3 8 3C6.89543 3 6 3.89543 6 5C6 5.6845 6.34387 6.28869 6.86829 6.64924C7.71486 5.84504 8.79591 5.28533 9.9983 5.08325Z"
-                                  fill="#052C65"/>
+                        <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11 15C13.2091 15 15 13.2091 15 11C15 8.79086 13.2091 7 11 7C8.79086 7 7 8.79086 7 11C7 13.2091 8.79086 15 11 15ZM16 11C16 13.7614 13.7614 16 11 16C8.23858 16 6 13.7614 6 11C6 8.23858 8.23858 6 11 6C13.7614 6 16 8.23858 16 11Z" fill="#052C65"/>
+                            <path d="M9.4375 11.9444C9.48519 12.5403 9.95568 13.0049 10.8013 13.0599V13.5H11.1764V13.0568C12.0507 12.9957 12.5625 12.5281 12.5625 11.8496C12.5625 11.2323 12.1715 10.9144 11.4721 10.7494L11.1764 10.6791V9.48105C11.5516 9.52384 11.79 9.72861 11.8472 10.0128H12.5053C12.4576 9.43826 11.9648 8.989 11.1764 8.9401V8.5H10.8013V8.94927C10.0542 9.02262 9.54559 9.47188 9.54559 10.1076C9.54559 10.6699 9.92389 11.0275 10.5533 11.1742L10.8013 11.2353V12.5067C10.4166 12.4487 10.1623 12.2378 10.1051 11.9444H9.4375ZM10.7981 10.5905C10.4294 10.5049 10.2291 10.3307 10.2291 10.0678C10.2291 9.77445 10.4453 9.5544 10.8013 9.49022V10.5905H10.7981ZM11.2305 11.3362C11.6787 11.4401 11.8854 11.6082 11.8854 11.9046C11.8854 12.2439 11.6279 12.4762 11.1764 12.5189V11.324L11.2305 11.3362Z" fill="#052C65"/>
+                            <path d="M1 0C0.447715 0 0 0.447716 0 1V9C0 9.55229 0.447715 10 1 10H5.08296C5.1407 9.65585 5.22773 9.32163 5.34141 9H3C3 7.89543 2.10457 7 1 7V3C2.10457 3 3 2.10457 3 1H13C13 2.10457 13.8954 3 15 3V6.52779C15.3801 6.86799 15.7166 7.25594 16 7.68221V1C16 0.447715 15.5523 0 15 0H1Z" fill="#052C65"/>
+                            <path d="M9.9983 5.08325C9.99943 5.05564 10 5.02789 10 5C10 3.89543 9.10457 3 8 3C6.89543 3 6 3.89543 6 5C6 5.6845 6.34387 6.28869 6.86829 6.64924C7.71486 5.84504 8.79591 5.28533 9.9983 5.08325Z" fill="#052C65"/>
                         </svg>
                         Доходы & Расходы
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link btn-toggle d-flex align-items-center justify-content-between rounded-0"
+                <li class="nav-item menu-active">
+                    <a class="nav-link btn-toggle d-flex align-items-center justify-content-between rounded-0 active bg-primary text-white"
                        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                         Категории
                         <svg class="toggle-arrow" width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.146894 12.8546C0.0528521 12.7608 0 12.6335 0 12.5006C0 12.3678 0.0528521 12.2404 0.146894 12.1466L5.79389 6.50064L0.146894 0.854643C0.0204218 0.72817 -0.0289712 0.543834 0.0173208 0.37107C0.0636128 0.198306 0.198557 0.0633621 0.371321 0.0170698C0.544085 -0.0292225 0.728422 0.0201702 0.854894 0.146643L6.85489 6.14664C6.94894 6.24045 7.00179 6.36782 7.00179 6.50064C7.00179 6.63347 6.94894 6.76084 6.85489 6.85464L0.854894 12.8546C0.76109 12.9487 0.633721 13.0015 0.500894 13.0015C0.368066 13.0015 0.240698 12.9487 0.146894 12.8546Z" fill="#052C65"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.146894 12.8546C0.0528521 12.7608 0 12.6335 0 12.5006C0 12.3678 0.0528521 12.2404 0.146894 12.1466L5.79389 6.50064L0.146894 0.854643C0.0204218 0.72817 -0.0289712 0.543834 0.0173208 0.37107C0.0636128 0.198306 0.198557 0.0633621 0.371321 0.0170698C0.544085 -0.0292225 0.728422 0.0201702 0.854894 0.146643L6.85489 6.14664C6.94894 6.24045 7.00179 6.36782 7.00179 6.50064C7.00179 6.63347 6.94894 6.76084 6.85489 6.85464L0.854894 12.8546C0.76109 12.9487 0.633721 13.0015 0.500894 13.0015C0.368066 13.0015 0.240698 12.9487 0.146894 12.8546Z" fill="white"/>
                         </svg>
                     </a>
-                    <div class="collapse" id="home-collapse">
+                    <div class="collapse show" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal small">
-                            <li class="nav-item"><a href="categories-income.html" class="nav-link d-flex text-decoration-none rounded-0">Доходы</a></li>
+                            <li class="nav-item"><a href="categories-income.html" class="nav-link d-flex text-decoration-none rounded-0 active bg-primary text-white">Доходы</a></li>
                             <li class="nav-item"><a href="categories-expense.html" class="nav-link d-flex text-decoration-none rounded-0">Расходы</a></li>
                         </ul>
                     </div>
@@ -89,16 +75,180 @@
             </div>
         </div>
     </nav>
+    <header class="d-md-none">
+        <div class="container-fluid p-0">
+            <!-- Верхняя строка -->
+            <div class="d-flex align-items-center justify-content-between px-4 py-3 border-bottom">
+                <div>
+                    <img src="src/images/logo.png" alt="логотип" style="width: 98px; height: 40px">
+                </div>
+                <!-- Баланс + пользователь (576px - 767px) -->
+                <div class="d-none d-sm-flex align-items-center gap-2">
+                    <div>
+                        <a href="#" class="balance d-block text-decoration-none px-4 border-start border-end">
+                            Баланс: <span>500$</span>
+                        </a>
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="me-1">
+                                <img src="src/images/person.png" alt="фото">
+                            </div>
+                            <div>Roman Chernov</div>
+                        </a>
+                        <ul class="dropdown-menu text-small shadow">
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Бургер (<576px) -->
+                <button class="btn btn-link p-0 d-sm-none" type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#mobileMenu"
+                        aria-controls="mobileMenu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 6H21M3 12H21M3 18H21" stroke="#052C65" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Навигация (576px - 767px) -->
+            <div class="d-none d-sm-block px-4 pb-4 pt-2">
+                <ul class="nav nav-pills d-flex justify-content-between">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link d-flex align-items-center" aria-current="page">
+                            <svg class="me-2" width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 12.2929V5.79289H2.5V12.2929C2.5 12.569 2.72386 12.7929 3 12.7929H12C12.2761 12.7929 12.5 12.569 12.5 12.2929V5.79289H13.5V12.2929C13.5 13.1213 12.8284 13.7929 12 13.7929H3C2.17157 13.7929 1.5 13.1213 1.5 12.2929Z" fill="white"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 1.29289V4.79289L10.5 2.79289V1.29289C10.5 1.01675 10.7239 0.792893 11 0.792893H12C12.2761 0.792893 12.5 1.01675 12.5 1.29289Z" fill="white"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.79289 0.292893C7.18342 -0.0976322 7.81658 -0.0976301 8.20711 0.292893L14.8536 6.93934C15.0488 7.1346 15.0488 7.45118 14.8536 7.64645C14.6583 7.84171 14.3417 7.84171 14.1464 7.64645L7.5 1L0.853553 7.64645C0.658291 7.84171 0.341709 7.84171 0.146447 7.64645C-0.0488155 7.45118 -0.0488155 7.1346 0.146447 6.93934L6.79289 0.292893Z" fill="white"/>
+                            </svg>
+                            Главная
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="operation.html" class="nav-link d-flex align-items-center">
+                            <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 15C13.2091 15 15 13.2091 15 11C15 8.79086 13.2091 7 11 7C8.79086 7 7 8.79086 7 11C7 13.2091 8.79086 15 11 15ZM16 11C16 13.7614 13.7614 16 11 16C8.23858 16 6 13.7614 6 11C6 8.23858 8.23858 6 11 6C13.7614 6 16 8.23858 16 11Z" fill="#052C65"/>
+                                <path d="M1 0C0.447715 0 0 0.447716 0 1V9C0 9.55229 0.447715 10 1 10H5.08296C5.1407 9.65585 5.22773 9.32163 5.34141 9H3C3 7.89543 2.10457 7 1 7V3C2.10457 3 3 2.10457 3 1H13C13 2.10457 13.8954 3 15 3V6.52779C15.3801 6.86799 15.7166 7.25594 16 7.68221V1C16 0.447715 15.5523 0 15 0H1Z" fill="#052C65"/>
+                            </svg>
+                            Доходы & Расходы
+                        </a>
+                    </li>
+                    <li class="nav-item menu-active">
+                        <div class="position-relative category-menu-wrapper">
+                            <a class="nav-link btn-toggle d-flex align-items-center gap-2 active bg-primary text-white border border-primary border-bottom-0 rounded-top"
+                               data-bs-toggle="collapse"
+                               data-bs-target="#category-collapse"
+                               aria-expanded="true">
+                                Категории
+                                <svg class="toggle-arrow" width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.146894 12.8546C0.0528521 12.7608 0 12.6335 0 12.5006C0 12.3678 0.0528521 12.2404 0.146894 12.1466L5.79389 6.50064L0.146894 0.854643C0.0204218 0.72817 -0.0289712 0.543834 0.0173208 0.37107C0.0636128 0.198306 0.198557 0.0633621 0.371321 0.0170698C0.544085 -0.0292225 0.728422 0.0201702 0.854894 0.146643L6.85489 6.14664C6.94894 6.24045 7.00179 6.36782 7.00179 6.50064C7.00179 6.63347 6.94894 6.76084 6.85489 6.85464L0.854894 12.8546C0.76109 12.9487 0.633721 13.0015 0.500894 13.0015C0.368066 13.0015 0.240698 12.9487 0.146894 12.8546Z" fill="white"/>
+                                </svg>
+                            </a>
+                            <div class="collapse show position-absolute bg-white shadow category-dropdown border border-primary border-top-0 rounded-bottom"
+                                 id="category-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal small mb-0">
+                                    <li class="nav-item">
+                                        <a href="categories-income.html"
+                                           class="nav-link d-flex text-decoration-none rounded-0 active bg-primary text-white">
+                                            Доходы
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="categories-expense.html"
+                                           class="nav-link d-flex text-decoration-none rounded-0">
+                                            Расходы
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Offcanvas меню (<576px) -->
+        <div class="offcanvas offcanvas-start d-sm-none" id="mobileMenu" tabindex="-1" aria-labelledby="mobileMenuLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="mobileMenuLabel">Меню</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column p-0">
+                <ul class="nav nav-pills flex-column p-3 mb-0">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link d-flex align-items-center" aria-current="page">
+                            <svg class="me-2" width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 12.2929V5.79289H2.5V12.2929C2.5 12.569 2.72386 12.7929 3 12.7929H12C12.2761 12.7929 12.5 12.569 12.5 12.2929V5.79289H13.5V12.2929C13.5 13.1213 12.8284 13.7929 12 13.7929H3C2.17157 13.7929 1.5 13.1213 1.5 12.2929Z" fill="white"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 1.29289V4.79289L10.5 2.79289V1.29289C10.5 1.01675 10.7239 0.792893 11 0.792893H12C12.2761 0.792893 12.5 1.01675 12.5 1.29289Z" fill="white"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.79289 0.292893C7.18342 -0.0976322 7.81658 -0.0976301 8.20711 0.292893L14.8536 6.93934C15.0488 7.1346 15.0488 7.45118 14.8536 7.64645C14.6583 7.84171 14.3417 7.84171 14.1464 7.64645L7.5 1L0.853553 7.64645C0.658291 7.84171 0.341709 7.84171 0.146447 7.64645C-0.0488155 7.45118 -0.0488155 7.1346 0.146447 6.93934L6.79289 0.292893Z" fill="white"/>
+                            </svg>
+                            Главная
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="operation.html" class="nav-link d-flex align-items-center">
+                            <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 15C13.2091 15 15 13.2091 15 11C15 8.79086 13.2091 7 11 7C8.79086 7 7 8.79086 7 11C7 13.2091 8.79086 15 11 15ZM16 11C16 13.7614 13.7614 16 11 16C8.23858 16 6 13.7614 6 11C6 8.23858 8.23858 6 11 6C13.7614 6 16 8.23858 16 11Z" fill="#052C65"/>
+                                <path d="M1 0C0.447715 0 0 0.447716 0 1V9C0 9.55229 0.447715 10 1 10H5.08296C5.1407 9.65585 5.22773 9.32163 5.34141 9H3C3 7.89543 2.10457 7 1 7V3C2.10457 3 3 2.10457 3 1H13C13 2.10457 13.8954 3 15 3V6.52779C15.3801 6.86799 15.7166 7.25594 16 7.68221V1C16 0.447715 15.5523 0 15 0H1Z" fill="#052C65"/>
+                            </svg>
+                            Доходы & Расходы
+                        </a>
+                    </li>
+                    <li class="nav-item menu-active">
+                        <a class="nav-link btn-toggle d-flex align-items-center justify-content-between rounded-0 active bg-primary text-white"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#mobile-category-collapse"
+                           aria-expanded="true">
+                            Категории
+                            <svg class="toggle-arrow" width="7" height="13" viewBox="0 0 7 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.146894 12.8546C0.0528521 12.7608 0 12.6335 0 12.5006C0 12.3678 0.0528521 12.2404 0.146894 12.1466L5.79389 6.50064L0.146894 0.854643C0.0204218 0.72817 -0.0289712 0.543834 0.0173208 0.37107C0.0636128 0.198306 0.198557 0.0633621 0.371321 0.0170698C0.544085 -0.0292225 0.728422 0.0201702 0.854894 0.146643L6.85489 6.14664C6.94894 6.24045 7.00179 6.36782 7.00179 6.50064C7.00179 6.63347 6.94894 6.76084 6.85489 6.85464L0.854894 12.8546C0.76109 12.9487 0.633721 13.0015 0.500894 13.0015C0.368066 13.0015 0.240698 12.9487 0.146894 12.8546Z" fill="white"/>
+                            </svg>
+                        </a>
+                        <div class="collapse show" id="mobile-category-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal small">
+                                <li class="nav-item">
+                                    <a href="categories-income.html" class="nav-link d-flex text-decoration-none rounded-0 active bg-primary text-white">Доходы</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="categories-expense.html" class="nav-link d-flex text-decoration-none rounded-0">Расходы</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="mt-auto border-top">
+                    <a href="#" class="balance d-block p-3 text-decoration-none border-bottom">
+                        Баланс: <span>500$</span>
+                    </a>
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle p-3"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="me-2">
+                                <img src="src/images/person.png" alt="фото" width="32" height="32">
+                            </div>
+                            <div>Roman Chernov</div>
+                        </a>
+                        <ul class="dropdown-menu text-small shadow">
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <main class="main-content flex-grow-1">
         <div class="container-fluid px-5 py-5">
             <h1 class="mx-2 px-1 mb-4 pb-2 mt-5 pt-1">Главная</h1>
-            <div class="form d-flex flex-wrap align-items-center mx-2 px-1">
-                <button class="btn btn-secondary me-1 ">Сегодня</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Неделя</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Месяц</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Год</button>
-                <button class="btn btn-outline-secondary ms-3 me-1">Все</button>
-                <div class="ms-3">
+            <div class="form w-auto d-flex flex-wrap gap-3 align-items-center mx-2 px-1">
+                <button class="btn btn-secondary">Сегодня</button>
+                <button class="btn btn-outline-secondary">Неделя</button>
+                <button class="btn btn-outline-secondary">Месяц</button>
+                <button class="btn btn-outline-secondary">Год</button>
+                <button class="btn btn-outline-secondary">Все</button>
+                <div class="">
                     <button class="btn btn-outline-secondary me-1">Интервал</button>
                     <span class="me-1">с</span>
                     <input type="text" class="date-input border-0 border-bottom border-secondary p-0 text-secondary"
@@ -162,10 +312,18 @@
         }
     };
 
+    // Функция для определения размеров в зависимости от ширины экрана
+    const getChartSize = () => {
+        if (window.innerWidth < 576) {
+            return {width: 337, height: 367};
+        }
+        return {width: 437, height: 467};
+    };
+
     const resizePlugin = {
         afterInit(chart) {
-            // Устанавливаем точные размеры canvas
-            chart.resize(437, 467);
+            const size = getChartSize();
+            chart.resize(size.width, size.height);
         }
     };
 
@@ -237,11 +395,6 @@
         options: createOptions('Расходы'),
         plugins: [legendSpacingPlugin, resizePlugin]
     });
-
-    // document.getElementById('income-chart').style.width = '437px';
-    // document.getElementById('income-chart').style.height = '467px';
-    // document.getElementById('expense-chart').style.width = '437px';
-    // document.getElementById('expense-chart').style.height = '467px';
 
 </script>
 
