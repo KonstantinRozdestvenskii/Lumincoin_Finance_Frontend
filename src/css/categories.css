@@ -12,5 +12,6 @@ h2, h3 {
 }
 
 .add-link {
+    height: calc(max(100%, 121px));
     cursor: pointer;
 }
