@@ -310,6 +310,7 @@
     };
 
     const legendSpacingPlugin = {
+        id: 'legendSpacingPlugin',
         beforeInit(chart) {
             // Сохраняем оригинальную функцию fit
             const originalFit = chart.legend.fit;
@@ -333,9 +334,27 @@
     };
 
     const resizePlugin = {
+        id: 'resizePlugin',
         afterInit(chart) {
-            const size = getChartSize();
-            chart.resize(size.width, size.height);
+            const updateSize = () => {
+                const size = getChartSize();
+                chart.resize(size.width, size.height);
+            };
+
+            // Инициализация размера
+            updateSize();
+
+            // Слушатель изменения размера окна
+            window.addEventListener('resize', updateSize);
+
+            // Сохраняем ссылку на функцию для удаления
+            chart._resizeUpdate = updateSize;
+        },
+        beforeDestroy(chart) {
+            // Удаляем слушатель при уничтожении графика
+            if (chart._resizeUpdate) {
+                window.removeEventListener('resize', chart._resizeUpdate);
+            }
         }
     };
 
@@ -361,7 +380,7 @@
 
     // Общие настройки с заголовком
     const createOptions = (titleText) => ({
-        responsive: false,
+        responsive: true,
         maintainAspectRatio: false,
         plugins: {
             legend: {

@@ -124,6 +124,39 @@ li.nav-item {
     font-size: 14px;
 }
 
+
+/* Обёртка для позиционирования */
+.date-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Стилизуем input */
+.date-input {
+    color: transparent; /* Скрываем стандартный текст */
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    min-width: 60px; /* Минимальная ширина */
+}
+
+/* Когда дата выбрана, показываем её */
+.date-input:valid {
+    color: #6c757d;
+}
+
+.date-input {
+    cursor: pointer;
+    max-width: 80px;
+    background: transparent;
+}
+
+.date-input:focus {
+    outline: none;
+    border-color: #0d6efd !important;
+}
+
 /* ========================================
    АДАПТИВНЫЕ СТИЛИ
    ======================================== */
