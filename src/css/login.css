@@ -8,7 +8,7 @@ body {
 }
 
 .form {
-    width: 397px;
+    width: calc(min(100%, 397px));
     box-sizing: border-box;
 }
 

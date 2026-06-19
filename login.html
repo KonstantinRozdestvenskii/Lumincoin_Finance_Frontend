@@ -10,14 +10,15 @@
 </head>
 <body class="vh-100 d-flex flex-column justify-content-center align-items-center">
 
-<header class="text-center pb-1 mb-2">
-    <img src="./src/images/logo.png" alt="Логотип">
-</header>
+<div class="p-4 p-sm-5">
+    <header class="text-center pb-1 mb-2">
+        <img src="./src/images/logo.png" alt="Логотип">
+    </header>
 
-<main class="login-main mt-5">
-    <h1 class="text-center mb-2 pb-1">Вход</h1>
-    <form class="form">
-        <div class="input-group w-100 mb-2">
+    <main class="login-main mt-5">
+        <h1 class="text-center mb-2 pb-1">Вход</h1>
+        <form class="form">
+            <div class="input-group w-100 mb-2">
             <span class="input-group-text">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -25,13 +26,13 @@
                           fill="#6C757D"/>
                 </svg>
             </span>
-            <input type="email" class="form-control ps-3 p-2" placeholder="Электронная почта" id="email">
-            <div id="emailFeedback" class="invalid-feedback">
-                Неверный e-mail
+                <input type="email" class="form-control ps-3 p-2" placeholder="Электронная почта" id="email">
+                <div id="emailFeedback" class="invalid-feedback">
+                    Неверный e-mail
+                </div>
             </div>
-        </div>
 
-        <div class="input-group w-100 mb-2">
+            <div class="input-group w-100 mb-2">
             <span class="input-group-text">
                 <svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -39,24 +40,26 @@
                           fill="#6C757D"/>
                 </svg>
             </span>
-            <input type="text" class="form-control ps-3 p-2" placeholder="Пароль" id="password">
-            <div id="passwordFeedback" class="invalid-feedback">
-                Неверный пароль
+                <input type="text" class="form-control ps-3 p-2" placeholder="Пароль" id="password">
+                <div id="passwordFeedback" class="invalid-feedback">
+                    Неверный пароль
+                </div>
             </div>
-        </div>
 
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="rememberMe">
-            <label class="form-check-label" for="rememberMe">
-                Запомнить меня
-            </label>
-        </div>
-        <button type="button" class="btn btn-primary w-100 mt-1 p-2">Войти</button>
-        <div class="mt-2">
-            <span>Ещё нет аккаунта? <a href="signup.html">Пройдите регистрацию</a></span>
-        </div>
-    </form>
-</main>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="rememberMe">
+                <label class="form-check-label" for="rememberMe">
+                    Запомнить меня
+                </label>
+            </div>
+            <button type="button" class="btn btn-primary w-100 mt-1 p-2">Войти</button>
+            <div class="mt-2">
+                <span>Ещё нет аккаунта? <a href="signup.html">Пройдите регистрацию</a></span>
+            </div>
+        </form>
+    </main>
+</div>
+
 
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
