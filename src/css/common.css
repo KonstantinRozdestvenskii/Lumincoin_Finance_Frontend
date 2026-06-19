@@ -157,7 +157,14 @@ li.nav-item {
     border-color: #0d6efd !important;
 }
 
+.popup-container {
+    background-color: rgba(0, 0, 0, 0.49);
+}
 
+.popup {
+    height: 161px;
+    width: calc(min(100%, 530px));
+}
 
 .popup-income {
     height: 184px;
