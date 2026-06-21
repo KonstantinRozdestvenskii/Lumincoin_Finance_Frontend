@@ -1,0 +1,26 @@
+h2, h3 {
+    font-family: 'roboto-medium', sans-serif;
+    color: #290661;
+}
+
+.col {
+    max-width: 352px !important;
+}
+
+.categories {
+    min-height: 121px;
+    max-width: 352px;
+    border-color: #CED4DA;
+}
+
+.add-link {
+    max-width: 352px;
+    height: calc(max(100%, 121px));
+    border-color: #CED4DA;
+    cursor: pointer;
+}
+
+.add-link a {
+    font-family: 'roboto-medium', sans-serif;
+    color: #CED4DA;
+}

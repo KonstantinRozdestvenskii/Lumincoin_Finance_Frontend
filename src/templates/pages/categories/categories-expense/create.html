@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Создание операции | Luminincoin Finance</title>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="node_modules/flatpickr/dist/flatpickr.css">
-    <link rel="stylesheet" href="src/css/common.css">
-    <link rel="stylesheet" href="src/css/operation-created.css">
+    <title>Создание категории расходов | Luminincoin Finance</title>
+    <link rel="stylesheet" href="../../../../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../../styles/common.css">
+    <link rel="stylesheet" href="../../../../styles/categories-create.css">
 </head>
 <body>
 
-<div class="vh-100">
+<div class="d-flex vh-100">
     <nav class="sidebar d-none d-md-flex flex-column border-end position-fixed top-0 start-0 vh-100 overflow-hidden">
         <div class="flex-shrink-0 px-5 py-3 border-bottom">
-            <img src="src/images/logo.png" alt="логотип" style="width: 98px; height: 40px">
+            <img src="../../../../static/images/logo.png" alt="логотип" style="width: 98px; height: 40px">
         </div>
         <div class="flex-grow-1 overflow-auto py-5 px-3">
             <ul class="nav nav-pills flex-column mb-0">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link d-flex align-items-center" aria-current="page">
+                    <a href="../../main.html" class="nav-link d-flex align-items-center" aria-current="page">
                         <svg class="me-2" width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 12.2929V5.79289H2.5V12.2929C2.5 12.569 2.72386 12.7929 3 12.7929H12C12.2761 12.7929 12.5 12.569 12.5 12.2929V5.79289H13.5V12.2929C13.5 13.1213 12.8284 13.7929 12 13.7929H3C2.17157 13.7929 1.5 13.1213 1.5 12.2929Z" fill="white"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 1.29289V4.79289L10.5 2.79289V1.29289C10.5 1.01675 10.7239 0.792893 11 0.792893H12C12.2761 0.792893 12.5 1.01675 12.5 1.29289Z" fill="white"/>
@@ -29,7 +28,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="operations.html" class="nav-link d-flex align-items-center">
+                    <a href="../../operations/view.html" class="nav-link d-flex align-items-center">
                         <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M11 15C13.2091 15 15 13.2091 15 11C15 8.79086 13.2091 7 11 7C8.79086 7 7 8.79086 7 11C7 13.2091 8.79086 15 11 15ZM16 11C16 13.7614 13.7614 16 11 16C8.23858 16 6 13.7614 6 11C6 8.23858 8.23858 6 11 6C13.7614 6 16 8.23858 16 11Z" fill="#052C65"/>
                             <path d="M9.4375 11.9444C9.48519 12.5403 9.95568 13.0049 10.8013 13.0599V13.5H11.1764V13.0568C12.0507 12.9957 12.5625 12.5281 12.5625 11.8496C12.5625 11.2323 12.1715 10.9144 11.4721 10.7494L11.1764 10.6791V9.48105C11.5516 9.52384 11.79 9.72861 11.8472 10.0128H12.5053C12.4576 9.43826 11.9648 8.989 11.1764 8.9401V8.5H10.8013V8.94927C10.0542 9.02262 9.54559 9.47188 9.54559 10.1076C9.54559 10.6699 9.92389 11.0275 10.5533 11.1742L10.8013 11.2353V12.5067C10.4166 12.4487 10.1623 12.2378 10.1051 11.9444H9.4375ZM10.7981 10.5905C10.4294 10.5049 10.2291 10.3307 10.2291 10.0678C10.2291 9.77445 10.4453 9.5544 10.8013 9.49022V10.5905H10.7981ZM11.2305 11.3362C11.6787 11.4401 11.8854 11.6082 11.8854 11.9046C11.8854 12.2439 11.6279 12.4762 11.1764 12.5189V11.324L11.2305 11.3362Z" fill="#052C65"/>
@@ -49,8 +48,8 @@
                     </a>
                     <div class="collapse show" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal small">
-                            <li class="nav-item"><a href="categories-income.html" class="nav-link d-flex text-decoration-none rounded-0 active">Доходы</a></li>
-                            <li class="nav-item"><a href="categories-expense.html" class="nav-link d-flex text-decoration-none rounded-0">Расходы</a></li>
+                            <li class="nav-item"><a href="../categories-income/view.html" class="nav-link d-flex text-decoration-none rounded-0">Доходы</a></li>
+                            <li class="nav-item"><a href="view.html" class="nav-link d-flex text-decoration-none rounded-0 active">Расходы</a></li>
                         </ul>
                     </div>
                 </li>
@@ -64,7 +63,7 @@
                 <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle p-3 mt-1 mb-4 mx-1"
                    data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="me-3">
-                        <img src="src/images/person.png" alt="фото">
+                        <img src="../../../../static/images/person.png" alt="фото">
                     </div>
                     <div>Roman Chernov</div>
                 </a>
@@ -79,7 +78,7 @@
             <!-- Верхняя строка -->
             <div class="d-flex justify-content-between px-4 border-bottom">
                 <div class="py-3">
-                    <img src="src/images/logo.png" alt="логотип" style="width: 98px; height: 40px">
+                    <img src="../../../../static/images/logo.png" alt="логотип" style="width: 98px; height: 40px">
                 </div>
                 <!-- Баланс + пользователь (576px - 767px) -->
                 <div class="d-none d-sm-flex gap-2">
@@ -92,7 +91,7 @@
                         <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="me-1">
-                                <img src="src/images/person.png" alt="фото">
+                                <img src="../../../../static/images/person.png" alt="фото">
                             </div>
                             <div>Roman Chernov</div>
                         </a>
@@ -113,7 +112,7 @@
             <div class="d-none d-sm-block px-4 pb-4 pt-2">
                 <ul class="nav nav-pills d-flex justify-content-between">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link d-flex align-items-center" aria-current="page">
+                        <a href="../../main.html" class="nav-link d-flex align-items-center" aria-current="page">
                             <svg class="me-2" width="15" height="14" viewBox="0 0 15 14" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -130,7 +129,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="operations.html" class="nav-link d-flex align-items-center">
+                        <a href="../../operations/view.html" class="nav-link d-flex align-items-center">
                             <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -159,14 +158,14 @@
                              id="category-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal small mb-0">
                                 <li class="nav-item">
-                                    <a href="categories-income.html"
-                                       class="nav-link d-flex text-decoration-none rounded-0 active">
+                                    <a href="../categories-income/view.html"
+                                       class="nav-link d-flex text-decoration-none rounded-0">
                                         Доходы
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="categories-expense.html"
-                                       class="nav-link d-flex text-decoration-none rounded-0">
+                                    <a href="view.html"
+                                       class="nav-link d-flex text-decoration-none rounded-0 active">
                                         Расходы
                                     </a>
                                 </li>
@@ -186,7 +185,7 @@
             <div class="offcanvas-body d-flex flex-column p-0">
                 <ul class="nav nav-pills flex-column p-3 mb-0">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link d-flex align-items-center" aria-current="page">
+                        <a href="../../main.html" class="nav-link d-flex align-items-center" aria-current="page">
                             <svg class="me-2" width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 12.2929V5.79289H2.5V12.2929C2.5 12.569 2.72386 12.7929 3 12.7929H12C12.2761 12.7929 12.5 12.569 12.5 12.2929V5.79289H13.5V12.2929C13.5 13.1213 12.8284 13.7929 12 13.7929H3C2.17157 13.7929 1.5 13.1213 1.5 12.2929Z" fill="white"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 1.29289V4.79289L10.5 2.79289V1.29289C10.5 1.01675 10.7239 0.792893 11 0.792893H12C12.2761 0.792893 12.5 1.01675 12.5 1.29289Z" fill="white"/>
@@ -196,7 +195,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="operations.html" class="nav-link d-flex align-items-center">
+                        <a href="../../operations/view.html" class="nav-link d-flex align-items-center">
                             <svg class="me-2" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11 15C13.2091 15 15 13.2091 15 11C15 8.79086 13.2091 7 11 7C8.79086 7 7 8.79086 7 11C7 13.2091 8.79086 15 11 15ZM16 11C16 13.7614 13.7614 16 11 16C8.23858 16 6 13.7614 6 11C6 8.23858 8.23858 6 11 6C13.7614 6 16 8.23858 16 11Z" fill="#052C65"/>
                                 <path d="M1 0C0.447715 0 0 0.447716 0 1V9C0 9.55229 0.447715 10 1 10H5.08296C5.1407 9.65585 5.22773 9.32163 5.34141 9H3C3 7.89543 2.10457 7 1 7V3C2.10457 3 3 2.10457 3 1H13C13 2.10457 13.8954 3 15 3V6.52779C15.3801 6.86799 15.7166 7.25594 16 7.68221V1C16 0.447715 15.5523 0 15 0H1Z" fill="#052C65"/>
@@ -217,10 +216,10 @@
                         <div class="collapse show" id="mobile-category-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal small">
                                 <li class="nav-item">
-                                    <a href="categories-income.html" class="nav-link d-flex text-decoration-none rounded-0 active">Доходы</a>
+                                    <a href="../categories-income/view.html" class="nav-link d-flex text-decoration-none rounded-0">Доходы</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="categories-expense.html" class="nav-link d-flex text-decoration-none rounded-0">Расходы</a>
+                                    <a href="view.html" class="nav-link d-flex text-decoration-none rounded-0 active">Расходы</a>
                                 </li>
                             </ul>
                         </div>
@@ -235,7 +234,7 @@
                         <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle p-3"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="me-2">
-                                <img src="src/images/person.png" alt="фото" width="32" height="32">
+                                <img src="../../../../static/images/person.png" alt="фото" width="32" height="32">
                             </div>
                             <div>Roman Chernov</div>
                         </a>
@@ -249,45 +248,15 @@
     </header>
     <main class="main-content flex-grow-1">
         <div class="container-fluid px-4 px-sm-5 py-5">
-            <h1 class="mb-4 pb-3 mt-5 pt-1 mx-2 px-1 text-center text-sm-start">Создание дохода/расхода</h1>
+            <h1 class="mb-4 pb-3 mt-5 pt-1 mx-2 px-1 text-sm-start">Создание категории расходов</h1>
             <form class="form mx-2 px-1 mb-5 pb-1">
-                <div class="input-group w-100 mb-2">
-                    <select class="form-select">
-                        <option>Доход</option>
-                        <option>Расход</option>
-                    </select>
-                </div>
-                <div class="input-group w-100 mb-2">
-                    <select class="form-select">
-                        <option>Депозиты</option>
-                        <option>Зарплата</option>
-                        <option>Сбережения</option>
-                        <option>Инвестиции</option>
-                    </select>
-                </div>
-                <div class="input-group w-100 mb-2">
-                    <input class="form-control" type="number" placeholder="Сумма в $..." id="sum">
-                    <div id="sumFeedback" class="invalid-feedback">
-                        Введите сумму
-                    </div>
-                </div>
-                <div class="input-group w-100 mb-2">
-                    <input type="text"
-                           class="form-control"
-                           id="date"
-                           placeholder="Дата..."
-                           autocomplete="off">
-                    <div id="dateFeedback" class="invalid-feedback">
-                        Введите дату
-                    </div>
-                </div>
                 <div class="input-group w-100">
-                    <textarea class="form-control" placeholder="Комментарий..." id="info"></textarea>
-                    <div id="infoFeedback" class="invalid-feedback">
-                        Введите комментарий
+                    <input class="form-control" type="text" placeholder="Название..." id="name">
+                    <div id="nameFeedback" class="invalid-feedback">
+                        Введите название
                     </div>
                 </div>
-                <div class="d-flex align-items-center pt-3 mt-1">
+                <div class="d-flex flex-wrap align-items-center pt-3 mt-1">
                     <button class="btn btn-success me-2">Создать</button>
                     <button class="btn btn-danger">Отмена</button>
                 </div>
@@ -296,17 +265,7 @@
     </main>
 </div>
 
-<script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-<script src="node_modules/flatpickr/dist/flatpickr.min.js"></script>
-<script src="node_modules/flatpickr/dist/l10n/ru.js"></script>
-<script>
-    flatpickr('#date', {
-        locale: 'ru',
-        dateFormat: 'd.m.Y',
-        allowInput: false,
-        position: 'auto',
-    });
-</script>
+<script src="../../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
 </body>
 </html>
