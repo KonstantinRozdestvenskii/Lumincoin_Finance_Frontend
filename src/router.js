@@ -183,6 +183,11 @@ export class Router {
             }
         ];
 
+        // Устанавливаем хеш по умолчанию, если его нет
+        if (!window.location.hash) {
+            window.location.hash = '#/';
+        }
+
         this.initEvents();
     }
 
@@ -193,7 +198,7 @@ export class Router {
 
     async openRoute() {
         const oldRoute = this.currentRoute;
-        const urlRoute = window.location.hash || '#/';
+        const urlRoute = window.location.hash;
         const newRoute = this.routes.find(item => item.route === urlRoute);
 
         if (!newRoute) {
