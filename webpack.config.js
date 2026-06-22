@@ -10,13 +10,13 @@ module.exports = {
     output: {
         filename: "app.js",
         path: path.resolve(__dirname, "dist"),
-        publicPath: "/#", // Важно для SPA и Vercel
-        clean: true      // Очищает папку dist перед каждой сборкой
+        publicPath: "/",
+        clean: true
     },
 
     devServer: {
         static: {
-            directory: path.join(__dirname, "dist"),
+            directory: '.dist',
         },
         compress: true,
         port: 9000
@@ -24,8 +24,7 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./index.html", // Убедитесь, что index.html лежит в корне проекта
-            // baseUrl удален, так как не является стандартной опцией плагина
+            template: "./index.html",
         }),
         new CopyPlugin({
             patterns: [
@@ -35,6 +34,8 @@ module.exports = {
                 { from: "./src/static/fonts", to: "fonts" },
                 { from: "./node_modules/chart.js/dist/chart.umd.js", to: "js" },
                 { from: "./node_modules/flatpickr/dist/flatpickr.css", to: "css" },
+                { from: "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js", to: "js" },
+                { from: "./node_modules/bootstrap/dist/css/bootstrap.css", to: "css" },
                 { from: "./node_modules/flatpickr/dist/flatpickr.min.js", to: "js" },
                 { from: "./node_modules/flatpickr/dist/l10n/ru.js", to: "js/flatpickr-ru.js" },
             ],

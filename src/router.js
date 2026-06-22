@@ -201,6 +201,15 @@ export class Router {
             return;
         }
 
+        // 🔥 ОЧИСТКА BODY: удаляем всё, кроме div#content
+        const contentElement = document.getElementById('content');
+        const bodyChildren = Array.from(document.body.children);
+        bodyChildren.forEach(child => {
+            if (child !== contentElement) {
+                child.remove();
+            }
+        });
+
         this.currentRoute = urlRoute;
 
         // Очистка предыдущего роута
@@ -256,37 +265,26 @@ export class Router {
 
         // Загрузка шаблонов
         if (newRoute.filePathTemplate) {
-            document.body.className = '';
-            let contentBlock = this.contentPageElement;
-
             if (newRoute.useLayout) {
+                // 1. Вставляем layout (сайдбар + хедер) в content
                 this.contentPageElement.innerHTML = await fetch(newRoute.useLayout)
                     .then(response => response.text());
-                contentBlock = document.getElementById('content-layout');
-                document.body.classList.add('sidebar-mini', 'layout-fixed');
-                this.activateMenuItem(newRoute);
-            } else {
-                document.body.classList.remove('sidebar-mini', 'layout-fixed');
-            }
 
-            contentBlock.innerHTML = await fetch(newRoute.filePathTemplate)
-                .then(response => response.text());
+                // 2. Добавляем шаблон страницы в конец блока content
+                const templateHTML = await fetch(newRoute.filePathTemplate)
+                    .then(response => response.text());
+                this.contentPageElement.insertAdjacentHTML('beforeend', templateHTML);
+
+            } else {
+                // Если layout не используется — просто вставляем шаблон
+                this.contentPageElement.innerHTML = await fetch(newRoute.filePathTemplate)
+                    .then(response => response.text());
+            }
         }
 
         // Инициализация страницы
         if (newRoute.load && typeof newRoute.load === 'function') {
             newRoute.load();
         }
-    }
-
-    activateMenuItem(route) {
-        document.querySelectorAll('.sidebar .nav-link').forEach(item => {
-            const href = item.getAttribute('href');
-            if ((route.route.includes(href) && href !== '#/') || (route.route === '#/' && href === '#/')) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
-        });
     }
 }
