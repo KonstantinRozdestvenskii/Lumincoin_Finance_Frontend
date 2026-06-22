@@ -25,6 +25,10 @@ h1 {
     color: #052C65;
 }
 
+nav.sidebar {
+    max-width: 219px;
+}
+
 nav a {
     font-family: 'roboto-regular', sans-serif;
     font-size: 14px;
@@ -100,6 +104,10 @@ li.nav-item {
 
 .btn-toggle:not(.collapsed) .toggle-arrow {
     transform: rotate(90deg);
+}
+
+.user-name {
+    text-wrap: auto;
 }
 
 

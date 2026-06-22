@@ -15,6 +15,7 @@ import {OperationsView} from "./components/operations/operations-view.js";
 import {OperationsCreate} from "./components/operations/operations-create.js";
 import {OperationsEdit} from "./components/operations/operations-edit.js";
 import {OperationsDelete} from "./components/operations/operations-delete.js";
+import {AuthUtils} from "./utils/auth-utils";
 
 export class Router {
     constructor() {
@@ -52,7 +53,7 @@ export class Router {
                 styles: ['auth.css']
             },
             {
-                route: '#/sign-up',
+                route: '#/signup',
                 title: 'Регистрация',
                 filePathTemplate: '/templates/pages/auth/signup.html',
                 useLayout: false,
@@ -184,21 +185,27 @@ export class Router {
         ];
 
         // Устанавливаем хеш по умолчанию, если его нет
+
+        const AuthInfo = AuthUtils.getAuthInfo();
         if (!window.location.hash) {
-            window.location.hash = '#/';
+            if (!AuthInfo.accessToken || !AuthInfo.refreshToken || !AuthInfo.userInfo) {
+                window.location.hash = '#/login';
+            } else {
+                window.location.hash = '#/';
+            }
         }
 
-        this.initEvents();
+        // this.initEvents();
     }
 
-    initEvents() {
-        window.addEventListener('DOMContentLoaded', this.openRoute.bind(this));
-        window.addEventListener('hashchange', this.openRoute.bind(this));
-    }
+    // initEvents() {
+    //     window.addEventListener('DOMContentLoaded', this.openRoute.bind(this));
+    //     window.addEventListener('hashchange', this.openRoute.bind(this));
+    // }
 
     async openRoute() {
         const oldRoute = this.currentRoute;
-        const urlRoute = window.location.hash;
+        const urlRoute = window.location.hash || '#/';
         const newRoute = this.routes.find(item => item.route === urlRoute);
 
         if (!newRoute) {
@@ -275,10 +282,22 @@ export class Router {
                 this.contentPageElement.innerHTML = await fetch(newRoute.useLayout)
                     .then(response => response.text());
 
+
                 // 2. Добавляем шаблон страницы в конец блока content
                 const templateHTML = await fetch(newRoute.filePathTemplate)
                     .then(response => response.text());
                 this.contentPageElement.insertAdjacentHTML('beforeend', templateHTML);
+
+                // 3. Заполняем информацию о пользователе
+                const userNameElements = document.getElementsByClassName('user-name');
+                let userName = null;
+                if (AuthUtils.getAuthInfo(AuthUtils.userInfoKey)) {
+                    const userInfoJson = JSON.parse(AuthUtils.getAuthInfo(AuthUtils.userInfoKey));
+                    userName = userInfoJson.name;
+                }
+                for (let i = 0; i < userNameElements.length; i++) {
+                    userNameElements[i].innerText = userName;
+                }
 
             } else {
                 // Если layout не используется — просто вставляем шаблон

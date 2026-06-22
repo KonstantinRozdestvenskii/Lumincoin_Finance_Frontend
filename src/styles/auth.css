@@ -12,6 +12,10 @@ body {
     box-sizing: border-box;
 }
 
+.error {
+    max-width: calc(min(100%, 397px));
+}
+
 .input-group span {
     background-color: #E9ECEF;
 }

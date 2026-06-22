@@ -1,3 +1,6 @@
+import {AuthUtils} from "./auth-utils.js";
+import config from "../config/config.js";
+
 export class HttpUtils {
     static async request(url, method = 'GET', useAuth = true, body = null) {
         const params = {
@@ -20,40 +23,28 @@ export class HttpUtils {
             params.body = JSON.stringify(body);
         }
 
-        let response;
-        try {
-            response = await fetch(config.api + url, params);
-        } catch (e) {
-            // Сетевая ошибка
-            return null;
-        }
+        const response = await fetch(config.api + url, params);
 
-        // Успех (2xx)
-        if (response.status >= 200 && response.status < 300) {
-            return await response.json();
-        }
+        if (response.status < 200 || response.status >= 300) {
+            if (useAuth && response.status === 401) {
+                // 1 - токена нет
+                if (!token) {
+                    window.location.hash = '#/login';
+                    return null
+                } else {
+                    // 2 - токен устарел/невалидный (надо обновить)
+                    const updateTokenResult = await AuthUtils.updateRefreshToken();
+                    if (updateTokenResult) {
+                        // Запрос повторно
+                        return this.request(url, method, useAuth, body);
+                    } else {
+                        window.location.hash = '#/login';
+                    }
+                }
 
-        // Ошибка авторизации (401)
-        if (response.status === 401 && useAuth) {
-            if (!token) {
-                // 1. Токена нет — сразу на логин
-                window.location.hash = '#/login';
-                return null;
-            }
-
-            // 2. Токен устарел — пробуем обновить
-            const updateTokenResult = await AuthUtils.updateRefreshToken();
-            if (updateTokenResult) {
-                // Повторяем запрос с новым токеном
-                return this.request(url, method, useAuth, body);
-            } else {
-                // Не удалось обновить — на логин
-                window.location.hash = '#/login';
-                return null;
             }
         }
 
-        // Другие ошибки (400, 403, 500 и т.д.)
-        return null;
+        return response.json();
     }
 }
