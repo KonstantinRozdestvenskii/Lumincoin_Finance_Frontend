@@ -15,7 +15,7 @@ import {OperationsView} from "./components/operations/operations-view.js";
 import {OperationsCreate} from "./components/operations/operations-create.js";
 import {OperationsEdit} from "./components/operations/operations-edit.js";
 import {OperationsDelete} from "./components/operations/operations-delete.js";
-import {AuthUtils} from "./utils/auth-utils";
+import {AuthUtils} from "./utils/auth-utils.js";
 
 export class Router {
     constructor() {
@@ -210,6 +210,11 @@ export class Router {
 
         if (!newRoute) {
             window.location.hash = '#/404';
+            return;
+        }
+
+        if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) && newRoute.route !== '#/login' && newRoute.route !== '#/signup' && newRoute.route !== '#/logout') {
+            window.location.hash = '#/login';
             return;
         }
 

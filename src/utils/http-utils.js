@@ -15,7 +15,7 @@ export class HttpUtils {
         if (useAuth) {
             token = AuthUtils.getAuthInfo(AuthUtils.accessTokenKey);
             if (token) {
-                params.headers['authorization'] = token;
+                params.headers['x-auth-token'] = token;
             }
         }
 
@@ -39,10 +39,12 @@ export class HttpUtils {
                         return this.request(url, method, useAuth, body);
                     } else {
                         window.location.hash = '#/login';
+                        return null
                     }
                 }
 
             }
+            return null;
         }
 
         return response.json();
