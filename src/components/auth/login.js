@@ -52,8 +52,7 @@ export class Login {
                 rememberMe: this.rememberMeElement.checked
             })
 
-            if (result.error || !result.tokens || (result.tokens && (!result.tokens.accessToken || !result.tokens.refreshToken))
-                || !result.user || (result.user && (!result.user.name || !result.user.lastName || !result.user.id))) {
+            if (!result || (result && result.error) || (result && !result.tokens) || (result && !result.user)) {
                 this.commonErrorElement.classList.remove('d-none');
                 return;
             }

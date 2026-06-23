@@ -14,6 +14,10 @@ export class CategoriesIncomeView {
             return alert('Возникла ошибка при запросе фрилансеров. Обратитесь в поддержку');
         }
 
+        if (result.error) {
+            return alert('Возникла ошибка при запросе фрилансеров. Обратитесь в поддержку');
+        }
+
         this.showCards(result);
 
     }
@@ -46,6 +50,7 @@ export class CategoriesIncomeView {
             editButton.classList.add('btn-primary');
             editButton.classList.add('me-2');
             editButton.classList.add('text-decoration-none');
+            editButton.href = '#/categories/income/edit?id=' + category.id;
             editButton.innerText = "Редактировать"
 
             const deleteButton = document.createElement('a');
@@ -53,6 +58,7 @@ export class CategoriesIncomeView {
             deleteButton.classList.add('btn-danger');
             deleteButton.classList.add('me-2');
             deleteButton.classList.add('text-decoration-none');
+            deleteButton.href = '#/categories/income/delete?id=' + category.id;
             deleteButton.innerText = "Удалить"
 
             cardAction.appendChild(editButton);

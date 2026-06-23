@@ -205,7 +205,7 @@ export class Router {
 
     async openRoute() {
         const oldRoute = this.currentRoute;
-        const urlRoute = window.location.hash || '#/';
+        const urlRoute = window.location.hash.split('?')[0];;
         const newRoute = this.routes.find(item => item.route === urlRoute);
 
         if (!newRoute) {
