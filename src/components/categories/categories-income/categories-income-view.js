@@ -2,6 +2,8 @@ import {HttpUtils} from "../../../utils/http-utils.js";
 
 export class CategoriesIncomeView {
     constructor() {
+
+        this.addButtonElement = document.getElementById("add-btn");
         this.getCategories().then();
     }
 
@@ -17,6 +19,52 @@ export class CategoriesIncomeView {
     }
 
     showCards(categoriesList) {
+
+        categoriesList.forEach(category => {
+            const cardColumn = document.createElement('div');
+            cardColumn.classList.add('col');
+
+            const card = document.createElement('div');
+            card.classList.add('categories');
+            card.classList.add('p-3');
+            card.classList.add('border');
+            card.classList.add('rounded-3');
+
+            const cardTitle = document.createElement('h2');
+            cardTitle.classList.add('mb-2');
+            cardTitle.classList.add('fs-3');
+            cardTitle.innerText = category.title;
+
+            const cardAction = document.createElement('div');
+            cardAction.classList.add('d-flex');
+            cardAction.classList.add('flex-wrap');
+            cardAction.classList.add('flex-sm-nowrap');
+            cardAction.classList.add('gap-2');
+
+            const editButton = document.createElement('a');
+            editButton.classList.add('btn');
+            editButton.classList.add('btn-primary');
+            editButton.classList.add('me-2');
+            editButton.classList.add('text-decoration-none');
+            editButton.innerText = "Редактировать"
+
+            const deleteButton = document.createElement('a');
+            deleteButton.classList.add('btn');
+            deleteButton.classList.add('btn-danger');
+            deleteButton.classList.add('me-2');
+            deleteButton.classList.add('text-decoration-none');
+            deleteButton.innerText = "Удалить"
+
+            cardAction.appendChild(editButton);
+            cardAction.appendChild(deleteButton);
+
+            card.appendChild(cardTitle);
+            card.appendChild(cardAction);
+
+            cardColumn.appendChild(card);
+
+            this.addButtonElement.parentNode.insertBefore(cardColumn, this.addButtonElement);
+        })
 
     }
 }

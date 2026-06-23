@@ -29,6 +29,10 @@ nav.sidebar {
     max-width: 219px;
 }
 
+a {
+    cursor: pointer;
+}
+
 nav a {
     font-family: 'roboto-regular', sans-serif;
     font-size: 14px;
