@@ -2,8 +2,8 @@
     <div class="container-fluid px-4 px-sm-5 py-5">
         <h1 class="mx-2 mb-4 pb-2 mt-5 pt-1 px-1 text-center text-sm-start">Доходы и расходы</h1>
         <div class="d-flex align-items-center ms-2 mb-4 pb-3 ps-1">
-            <a href="create.html" class="btn btn-success me-2">Создать доход</a>
-            <a href="create.html" class="btn btn-danger">Создать расход</a>
+            <a href="#/operations/create?target=income" class="btn btn-success me-2">Создать доход</a>
+            <a href="#/operations/create?target=expense" class="btn btn-danger">Создать расход</a>
         </div>
 
         <div class="form w-auto d-flex flex-wrap gap-3 align-items-center justify-content-center justify-content-sm-start mx-2 mb-4 pb-3 px-1">
@@ -37,7 +37,7 @@
                     <th scope="col">Сумма</th>
                     <th scope="col">Дата</th>
                     <th scope="col">Комментарий</th>
-                    <th scope="col"></th>
+                    <th class="operation-column" scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -48,7 +48,7 @@
                     <td>500$</td>
                     <td>11.09.2022</td>
                     <td></td>
-                    <td class="d-flex align-items-center flex-nowrap">
+                    <td class="operation-column d-flex align-items-center flex-nowrap">
                         <a href="#/operations/delete" class="text-decoration-none cursor-pointer">
                             <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
                                 <path d="M4 5.5C4.27614 5.5 4.5 5.72386 4.5 6V12C4.5 12.2761 4.27614 12.5 4 12.5C3.72386 12.5 3.5 12.2761 3.5 12V6C3.5 5.72386 3.72386 5.5 4 5.5Z" fill="black"/>
@@ -71,7 +71,7 @@
                     <td>2 500$</td>
                     <td>12.09.2022</td>
                     <td></td>
-                    <td class="d-flex align-items-center flex-nowrap">
+                    <td class="operation-column d-flex align-items-center flex-nowrap">
                         <a href="#/operations/delete" class="text-decoration-none cursor-pointer">
                             <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="me-2">
                                 <path d="M4 5.5C4.27614 5.5 4.5 5.72386 4.5 6V12C4.5 12.2761 4.27614 12.5 4 12.5C3.72386 12.5 3.5 12.2761 3.5 12V6C3.5 5.72386 3.72386 5.5 4 5.5Z" fill="black"/>
