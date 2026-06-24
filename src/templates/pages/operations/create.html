@@ -1,0 +1,47 @@
+<main class="main-content flex-grow-1">
+    <div class="container-fluid px-4 px-sm-5 py-5">
+        <h1 class="mb-4 pb-3 mt-5 pt-1 mx-2 px-1 text-center text-sm-start">Создание дохода/расхода</h1>
+        <form class="form mx-2 px-1 mb-5 pb-1">
+            <div class="input-group w-100 mb-2">
+                <select class="form-select">
+                    <option>Доход</option>
+                    <option>Расход</option>
+                </select>
+            </div>
+            <div class="input-group w-100 mb-2">
+                <select class="form-select">
+                    <option>Депозиты</option>
+                    <option>Зарплата</option>
+                    <option>Сбережения</option>
+                    <option>Инвестиции</option>
+                </select>
+            </div>
+            <div class="input-group w-100 mb-2">
+                <input class="form-control" type="number" placeholder="Сумма в $..." id="sum">
+                <div id="sumFeedback" class="invalid-feedback">
+                    Введите сумму
+                </div>
+            </div>
+            <div class="input-group w-100 mb-2">
+                <input type="text"
+                       class="form-control"
+                       id="date"
+                       placeholder="Дата..."
+                       autocomplete="off">
+                <div id="dateFeedback" class="invalid-feedback">
+                    Введите дату
+                </div>
+            </div>
+            <div class="input-group w-100">
+                <textarea class="form-control" placeholder="Комментарий..." id="info"></textarea>
+                <div id="infoFeedback" class="invalid-feedback">
+                    Введите комментарий
+                </div>
+            </div>
+            <div class="d-flex align-items-center pt-3 mt-1">
+                <button class="btn btn-success me-2">Создать</button>
+                <button class="btn btn-danger">Отмена</button>
+            </div>
+        </form>
+    </div>
+</main>
