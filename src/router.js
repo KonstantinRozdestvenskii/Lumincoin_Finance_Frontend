@@ -287,7 +287,6 @@ export class Router {
                 this.contentPageElement.innerHTML = await fetch(newRoute.useLayout)
                     .then(response => response.text());
 
-
                 // 2. Добавляем шаблон страницы в конец блока content
                 const templateHTML = await fetch(newRoute.filePathTemplate)
                     .then(response => response.text());
@@ -304,6 +303,9 @@ export class Router {
                     userNameElements[i].innerText = userName;
                 }
 
+                // 4. Делаем активным текущий пункт меню
+                this.activateMenuItem(newRoute);
+
             } else {
                 // Если layout не используется — просто вставляем шаблон
                 this.contentPageElement.innerHTML = await fetch(newRoute.filePathTemplate)
@@ -315,5 +317,41 @@ export class Router {
         if (newRoute.load && typeof newRoute.load === 'function') {
             newRoute.load();
         }
+    }
+
+    activateMenuItem(route) {
+        const currentRoute = route.route;
+
+        // Сначала сбрасываем active у всех возможных элементов
+        document.querySelectorAll('.nav-link, li.nav-item.rounded-2, a.btn-toggle')
+            .forEach(el => el.classList.remove('active'));
+
+        // Ищем подходящий nav-link
+        document.querySelectorAll('.nav-link').forEach(item => {
+            const href = item.getAttribute('href');
+
+            // Пропускаем элементы без href (например, сам btn-toggle)
+            if (!href) return;
+
+            // Проверка совпадения для хеш-роутинга
+            const isActive = (currentRoute.includes(href) && href !== '#/') ||
+                (currentRoute === '#/' && href === '#/');
+
+            if (isActive) {
+                item.classList.add('active');
+
+                // Проверяем, находится ли ссылка внутри раскрывающегося меню
+                const collapse = item.closest('.collapse');
+                if (collapse) {
+                    // "Прапрадед" — li.nav-item.rounded-2
+                    const topLevelItem = item.closest('li.nav-item.rounded-2');
+                    if (topLevelItem) topLevelItem.classList.add('active');
+
+                    // Элемент a.btn-toggle на одном уровне с div.collapse ("дедушкой")
+                    const toggle = collapse.parentElement.querySelector('a.btn-toggle');
+                    if (toggle) toggle.classList.add('active');
+                }
+            }
+        });
     }
 }

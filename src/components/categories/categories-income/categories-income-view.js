@@ -4,6 +4,11 @@ export class CategoriesIncomeView {
     constructor() {
 
         this.addButtonElement = document.getElementById("add-btn");
+        this.popupElement = document.getElementById('popup');
+
+        this.popupElement.classList.add('d-none');
+
+
         this.getCategories().then();
     }
 
@@ -11,11 +16,11 @@ export class CategoriesIncomeView {
         const result = await HttpUtils.request('/categories/income');
 
         if (!result) {
-            return alert('Возникла ошибка при запросе фрилансеров. Обратитесь в поддержку');
+            return alert('Возникла ошибка при запросе категории. Обратитесь в поддержку');
         }
 
         if (result.error) {
-            return alert('Возникла ошибка при запросе фрилансеров. Обратитесь в поддержку');
+            return alert('Возникла ошибка при запросе категории. Обратитесь в поддержку');
         }
 
         this.showCards(result);
@@ -58,8 +63,12 @@ export class CategoriesIncomeView {
             deleteButton.classList.add('btn-danger');
             deleteButton.classList.add('me-2');
             deleteButton.classList.add('text-decoration-none');
-            deleteButton.href = '#/categories/income/delete?id=' + category.id;
+            deleteButton.href = 'javascript:void(0)'
             deleteButton.innerText = "Удалить"
+            deleteButton.addEventListener('click', e => {
+                this.popupElement.classList.remove('d-none');
+                this.popupInitEvents(category.id);
+            });
 
             cardAction.appendChild(editButton);
             cardAction.appendChild(deleteButton);
@@ -72,5 +81,16 @@ export class CategoriesIncomeView {
             this.addButtonElement.parentNode.insertBefore(cardColumn, this.addButtonElement);
         })
 
+    }
+
+    popupInitEvents(id) {
+        document.getElementById('delete-confirmation').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.hash = '#/categories/income/delete?id=' + id;
+        });
+
+        document.getElementById('delete-cancel').addEventListener('click', e => {
+            window.location.hash = '#/categories/income';
+        })
     }
 }

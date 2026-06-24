@@ -59,13 +59,9 @@ export class CategoriesIncomeEdit {
             if (this.originalCategory.title !== this.nameInputElement.value) {
                 const result = await HttpUtils.request('/categories/income/' + this.originalCategory.id, 'PUT', true, {
                     title: this.nameInputElement.value,
-                })
+                });
 
-                if (!result) {
-                    return alert('Возникла ошибка при изменении категории. Обратитесь в поддержку');
-                }
-
-                if (result.error) {
+                if (!result || (result && result.error)) {
                     return alert('Возникла ошибка при изменении категории. Обратитесь в поддержку');
                 }
             }

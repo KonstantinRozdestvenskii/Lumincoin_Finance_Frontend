@@ -3,7 +3,7 @@ import {HttpUtils} from "../../../utils/http-utils";
 export class CategoriesIncomeCreate {
     constructor() {
         this.nameInputElement = document.getElementById("name");
-        document.getElementById("create").addEventListener("click", this.createIncomeCategory.bind(this));
+        document.getElementById("create").addEventListener("click", this.createCategory.bind(this));
         document.getElementById("cancel").addEventListener("click", e => {
             e.preventDefault();
             return window.location.href = '#/categories/income';
@@ -24,22 +24,18 @@ export class CategoriesIncomeCreate {
         return isValid;
     }
 
-    async createIncomeCategory(e) {
+    async createCategory(e) {
         e.preventDefault();
         if (this.validateForm()) {
             const result = await HttpUtils.request('/categories/income', 'POST', true, {
                 title: this.nameInputElement.value,
             })
 
-            if (!result) {
+            if (!result || (result && result.error)) {
                 return alert('Возникла ошибка при запросе категорий. Обратитесь в поддержку');
             }
 
-            if (result.error) {
-                return alert('Возникла ошибка при запросе категорий. Обратитесь в поддержку');
-            }
-
-            return window.location.hash = '#/categories/income';
+            return window.location.hash = '#/categories/expense';
         }
     }
 }

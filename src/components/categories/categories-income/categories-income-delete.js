@@ -19,11 +19,7 @@ export class CategoriesIncomeDelete {
     async deleteCategory(id) {
         const result = await HttpUtils.request('/categories/income/' + id, 'DELETE', true);
 
-        if (!result) {
-            return alert('Возникла ошибка при удалении категории. Обратитесь в поддержку');
-        }
-
-        if (result.error) {
+        if (!result || (result && result.error)) {
             return alert('Возникла ошибка при удалении категории. Обратитесь в поддержку');
         }
 
