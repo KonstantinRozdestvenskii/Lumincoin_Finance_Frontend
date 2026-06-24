@@ -16,6 +16,8 @@ import {OperationsCreate} from "./components/operations/operations-create.js";
 import {OperationsEdit} from "./components/operations/operations-edit.js";
 import {OperationsDelete} from "./components/operations/operations-delete.js";
 import {AuthUtils} from "./utils/auth-utils.js";
+import {HttpUtils} from "./utils/http-utils";
+import {Balance} from "./components/balance";
 
 export class Router {
     constructor() {
@@ -195,13 +197,8 @@ export class Router {
             }
         }
 
-        // this.initEvents();
-    }
 
-    // initEvents() {
-    //     window.addEventListener('DOMContentLoaded', this.openRoute.bind(this));
-    //     window.addEventListener('hashchange', this.openRoute.bind(this));
-    // }
+    }
 
     async openRoute() {
         const oldRoute = this.currentRoute;
@@ -287,6 +284,7 @@ export class Router {
                 this.contentPageElement.innerHTML = await fetch(newRoute.useLayout)
                     .then(response => response.text());
 
+
                 // 2. Добавляем шаблон страницы в конец блока content
                 const templateHTML = await fetch(newRoute.filePathTemplate)
                     .then(response => response.text());
@@ -305,6 +303,32 @@ export class Router {
 
                 // 4. Делаем активным текущий пункт меню
                 this.activateMenuItem(newRoute);
+
+                // 5. Обновляем баланс
+                this.balanceElements = document.getElementsByClassName('balance');
+                this.refreshBalance().then();
+
+                // 6. Редактирование баланса
+                this.balancePopupElement = document.getElementById('popup-balance');
+                this.balancePopupElement.classList.add('d-none');
+                this.balanceInputElement = document.getElementById('balance-value');
+
+                for (const balanceElement of this.balanceElements) {
+                    balanceElement.addEventListener('click', e => {
+                        e.preventDefault();
+                        this.showBalancePopup().then();
+                    });
+                }
+
+                document.getElementById('balance-save').addEventListener('click', e => {
+                    e.preventDefault();
+                    this.editBalance().then();
+                })
+
+                document.getElementById('balance-cancel').addEventListener('click', e => {
+                    e.preventDefault();
+                    this.balancePopupElement.classList.add('d-none');
+                })
 
             } else {
                 // Если layout не используется — просто вставляем шаблон
@@ -352,6 +376,51 @@ export class Router {
                     if (toggle) toggle.classList.add('active');
                 }
             }
+
+
         });
+    }
+
+    async getBalance() {
+        const result = await HttpUtils.request('/balance', 'GET', true);
+
+        let balance = 0;
+
+        if (!result || (result && result.error)) {
+            alert('Возникла ошибка при запросе баланса. Обратитесь в поддержку');
+            balance = 0;
+        } else {
+            balance = result.balance;
+        }
+
+        return balance;
+    }
+
+    async refreshBalance() {
+        const balance = await this.getBalance();
+        for (const balanceElement of this.balanceElements) {
+            balanceElement.querySelector('span').innerText = balance + '$';
+        }
+
+    }
+
+    async showBalancePopup() {
+        this.balancePopupElement.classList.remove('d-none');
+        this.balanceInputElement.value = await this.getBalance();
+    }
+
+    async editBalance() {
+       if (this.balanceInputElement.value) {
+           const result = await HttpUtils.request('/balance', 'PUT', true, {
+               newBalance: this.balanceInputElement.value,
+           })
+
+           if (!result || (result && result.error)) {
+               alert('Возникла ошибка при изменении баланса. Обратитесь в поддержку');
+           }
+       }
+
+       this.balancePopupElement.classList.add('d-none');
+       await this.refreshBalance();
     }
 }
