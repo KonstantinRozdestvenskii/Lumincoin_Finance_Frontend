@@ -1,23 +1,23 @@
 <main class="main-content flex-grow-1">
     <div class="container-fluid px-4 px-sm-5 py-5">
         <h1 class="mx-2 px-1 mb-4 pb-2 mt-5 pt-1 text-center text-sm-start">Главная</h1>
-        <div class="form w-auto d-flex flex-wrap gap-3 align-items-center justify-content-center justify-content-sm-start mx-2 px-1">
-            <button class="btn btn-outline-secondary active">Сегодня</button>
-            <button class="btn btn-outline-secondary">Неделя</button>
-            <button class="btn btn-outline-secondary">Месяц</button>
-            <button class="btn btn-outline-secondary">Год</button>
-            <button class="btn btn-outline-secondary">Все</button>
-            <button class="btn btn-outline-secondary">Интервал</button>
+        <div class="form w-auto d-flex flex-wrap gap-3 align-items-center justify-content-center justify-content-sm-start mx-2 mb-4 pb-3 px-1">
+            <button class="btn btn-outline-secondary" period="today">Сегодня</button>
+            <button class="btn btn-outline-secondary" period="week">Неделя</button>
+            <button class="btn btn-outline-secondary" period="month">Месяц</button>
+            <button class="btn btn-outline-secondary" period="year">Год</button>
+            <button class="btn btn-outline-secondary active" period="all">Все</button>
+            <button class="btn btn-outline-secondary" period="interval">Интервал</button>
             <div class="d-flex align-items-center gap-3">
                 <div>
                     <span class="me-1">с</span>
                     <input type="text" class="date-input border-0 border-bottom border-secondary p-0 text-secondary"
-                           placeholder="дд.мм.гггг" readonly>
+                           placeholder="гггг.мм.дд" id="dateFrom" readonly>
                 </div>
                 <div>
                     <span class="ms-3 me-1">по</span>
                     <input type="text" class="date-input border-0 border-bottom border-secondary p-0 text-secondary"
-                           placeholder="дд.мм.гггг" readonly>
+                           placeholder="гггг.мм.дд" id="dateTo" readonly>
                 </div>
             </div>
         </div>
@@ -35,143 +35,3 @@
         </div>
     </div>
 </main>
-
-
-<script>
-    // Инициализация Flatpickr для всех date-input
-    flatpickr('.date-input', {
-        locale: 'ru',           // Русский язык
-        dateFormat: 'd.m.Y',    // Формат дд.мм.гггг
-        allowInput: false,      // Только через календарь
-        position: 'auto',       // Автоматическое позиционирование
-        static: false           // Позиционируется относительно input
-    });
-</script>
-<script>
-    const colors = {
-        red: '#E0435E',
-        orange: '#F59E32',
-        yellow: '#FACC15',
-        green: '#2DD4BF',
-        blue: '#2563EB'
-    };
-
-    const legendSpacingPlugin = {
-        id: 'legendSpacingPlugin',
-        beforeInit(chart) {
-            // Сохраняем оригинальную функцию fit
-            const originalFit = chart.legend.fit;
-
-            // Переопределяем её
-            chart.legend.fit = function fit() {
-                // Вызываем оригинальную функцию
-                originalFit.bind(chart.legend)();
-                // Добавляем нужный отступ (40px)
-                this.height += 40;
-            }
-        }
-    };
-
-    // Функция для определения размеров в зависимости от ширины экрана
-    const getChartSize = () => {
-        if (window.innerWidth < 576) {
-            return {width: 337, height: 367};
-        }
-        return {width: 437, height: 467};
-    };
-
-    const resizePlugin = {
-        id: 'resizePlugin',
-        afterInit(chart) {
-            const updateSize = () => {
-                const size = getChartSize();
-                chart.resize(size.width, size.height);
-            };
-
-            // Инициализация размера
-            updateSize();
-
-            // Слушатель изменения размера окна
-            window.addEventListener('resize', updateSize);
-
-            // Сохраняем ссылку на функцию для удаления
-            chart._resizeUpdate = updateSize;
-        },
-        beforeDestroy(chart) {
-            // Удаляем слушатель при уничтожении графика
-            if (chart._resizeUpdate) {
-                window.removeEventListener('resize', chart._resizeUpdate);
-            }
-        }
-    };
-
-    const incomeData = {
-        labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-        datasets: [{
-            data: [30, 40, 15, 10, 5],
-            backgroundColor: Object.values(colors),
-            borderWidth: 2,
-            borderColor: '#ffffff'
-        }]
-    };
-
-    const expenseData = {
-        labels: ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-        datasets: [{
-            data: [5, 10, 30, 30, 25],
-            backgroundColor: Object.values(colors),
-            borderWidth: 2,
-            borderColor: '#ffffff'
-        }]
-    };
-
-    // Общие настройки с заголовком
-    const createOptions = (titleText) => ({
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                display: true,
-                position: 'top',
-                labels: {
-                    boxWidth: 35,
-                    boxHeight: 10,
-                    padding: 10,
-                    font: {
-                        family: "'roboto-medium', sans-serif",
-                        size: 12,
-                    },
-                    color: '#000000',
-                }
-            },
-            title: {
-                display: true,
-                text: titleText,
-                font: {
-                    family: "'roboto-medium', sans-serif",
-                    size: 28
-                },
-                color: '#4c1d95',
-                padding: {
-                    bottom: 20
-                }
-            }
-        }
-    });
-
-    // Создаем графики с разными заголовками
-    new Chart(document.getElementById('income-chart'), {
-        type: 'pie',
-        data: incomeData,
-        options: createOptions('Доходы'),
-        plugins: [legendSpacingPlugin, resizePlugin]
-    });
-
-    new Chart(document.getElementById('expense-chart'), {
-        type: 'pie',
-        data: expenseData,
-        options: createOptions('Расходы'),
-        plugins: [legendSpacingPlugin, resizePlugin]
-    });
-
-</script>

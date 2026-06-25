@@ -15,16 +15,11 @@ export class CategoriesIncomeView {
     async getCategories() {
         const result = await HttpUtils.request('/categories/income');
 
-        if (!result) {
-            return alert('Возникла ошибка при запросе категории. Обратитесь в поддержку');
-        }
-
-        if (result.error) {
-            return alert('Возникла ошибка при запросе категории. Обратитесь в поддержку');
+        if (!result || (result && result.error)) {
+            return alert('Возникла ошибка при запросе категорий. Обратитесь в поддержку');
         }
 
         this.showCards(result);
-
     }
 
     showCards(categoriesList) {

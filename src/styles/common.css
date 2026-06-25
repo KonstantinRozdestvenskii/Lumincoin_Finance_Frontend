@@ -144,14 +144,14 @@ li.nav-item {
 }
 
 /* Стилизуем input */
-.date-input {
-    color: transparent; /* Скрываем стандартный текст */
-    background: transparent;
-    cursor: pointer;
-    position: relative;
-    z-index: 2;
-    min-width: 60px; /* Минимальная ширина */
-}
+/*.date-input {*/
+/*    color: transparent; !* Скрываем стандартный текст *!*/
+/*    background: transparent;*/
+/*    cursor: pointer;*/
+/*    position: relative;*/
+/*    z-index: 2;*/
+/*    min-width: 60px; !* Минимальная ширина *!*/
+/*}*/
 
 /* Когда дата выбрана, показываем её */
 .date-input:valid {

@@ -1,4 +1,4 @@
-import {MainPage} from "./components/main_page.js";
+import {MainPage} from "./components/main.js";
 import {Login} from "./components/auth/login.js";
 import {FileUtils} from "./utils/file-utils.js";
 import {SignUp} from "./components/auth/sign-up.js";
@@ -16,8 +16,8 @@ import {OperationsCreate} from "./components/operations/operations-create.js";
 import {OperationsEdit} from "./components/operations/operations-edit.js";
 import {OperationsDelete} from "./components/operations/operations-delete.js";
 import {AuthUtils} from "./utils/auth-utils.js";
-import {HttpUtils} from "./utils/http-utils";
-import {Balance} from "./components/balance";
+import {HttpUtils} from "./utils/http-utils.js";
+import {CommonUtils} from "./utils/common-utils.js";
 
 export class Router {
     constructor() {
@@ -344,7 +344,25 @@ export class Router {
     }
 
     activateMenuItem(route) {
-        const currentRoute = route.route;
+        let currentRoute = route.route;
+
+        // Особый случай: для operations/create и operations/edit
+        // нужно активировать соответствующий пункт в меню "Категории"
+        const isOperationsSpecialCase = currentRoute.startsWith('#/operations/create') ||
+            currentRoute.startsWith('#/operations/edit');
+
+        if (isOperationsSpecialCase) {
+            // Получаем параметры из хеша
+            const params = CommonUtils.getHashParams();
+            const target = params.target;
+
+            // Меняем currentRoute на соответствующий categories роут
+            if (target === 'income') {
+                currentRoute = '#/categories/income';
+            } else if (target === 'expense') {
+                currentRoute = '#/categories/expense';
+            }
+        }
 
         // Сначала сбрасываем active у всех возможных элементов
         document.querySelectorAll('.nav-link, li.nav-item.rounded-2, a.btn-toggle')
@@ -356,6 +374,11 @@ export class Router {
 
             // Пропускаем элементы без href (например, сам btn-toggle)
             if (!href) return;
+
+            // Особый случай: не активируем #/operations для operations/create и operations/edit
+            if (isOperationsSpecialCase && href === '#/operations') {
+                return;
+            }
 
             // Проверка совпадения для хеш-роутинга
             const isActive = (currentRoute.includes(href) && href !== '#/') ||
@@ -374,10 +397,13 @@ export class Router {
                     // Элемент a.btn-toggle на одном уровне с div.collapse ("дедушкой")
                     const toggle = collapse.parentElement.querySelector('a.btn-toggle');
                     if (toggle) toggle.classList.add('active');
+
+                    // Дополнительно: разворачиваем меню, если оно свёрнуто
+                    if (!collapse.classList.contains('show')) {
+                        new bootstrap.Collapse(collapse, { toggle: true });
+                    }
                 }
             }
-
-
         });
     }
 
