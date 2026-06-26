@@ -1,15 +1,28 @@
+import {CommonUtils} from "../../utils/common-utils";
+import {HttpUtils} from "../../utils/http-utils";
+
 export class OperationsDelete {
     constructor() {
-        this.initCalendar();
+
+        const urlParams = CommonUtils.getHashParams();
+
+        const id = urlParams.id;
+
+        if (!id) {
+            return window.location.hash = '#/operations';
+        }
+
+        this.deleteOperations(id).then();
+
     }
 
-    initCalendar() {
-        flatpickr('.date-input', {
-            locale: 'ru',           // Русский язык
-            dateFormat: 'd.m.Y',    // Формат дд.мм.гггг
-            allowInput: false,      // Только через календарь
-            position: 'auto',       // Автоматическое позиционирование
-            static: false           // Позиционируется относительно input
-        });
+    async deleteOperations(id) {
+        const result = await HttpUtils.request('/operations/' + id, 'DELETE', true);
+
+        if (!result || (result && result.error)) {
+            return alert('Возникла ошибка при удалении операции. Обратитесь в поддержку');
+        }
+
+        return window.location.hash = '#/operations';
     }
 }

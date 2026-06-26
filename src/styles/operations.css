@@ -6,3 +6,7 @@
 .table th[scope="row"] {
     color: black;
 }
+
+.operation-column {
+    width: 50px;
+}

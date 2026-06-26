@@ -77,7 +77,9 @@ export class SignUp {
                 passwordRepeat: this.repeatPasswordElement.value
             })
 
-            if (result.error || !result.user || (result.user && (!result.user.name || !result.user.lastName || !result.user.id))) {
+            if (!result || ( result.error))
+
+            if (!result || (result && result.error) || (result && !result.tokens) || (result && !result.user)) {
                 this.commonErrorElement.classList.remove('d-none');
                 return;
             }

@@ -1,4 +1,4 @@
-import {MainPage} from "./components/main_page.js";
+import {MainPage} from "./components/main.js";
 import {Login} from "./components/auth/login.js";
 import {FileUtils} from "./utils/file-utils.js";
 import {SignUp} from "./components/auth/sign-up.js";
@@ -16,6 +16,8 @@ import {OperationsCreate} from "./components/operations/operations-create.js";
 import {OperationsEdit} from "./components/operations/operations-edit.js";
 import {OperationsDelete} from "./components/operations/operations-delete.js";
 import {AuthUtils} from "./utils/auth-utils.js";
+import {HttpUtils} from "./utils/http-utils.js";
+import {CommonUtils} from "./utils/common-utils.js";
 
 export class Router {
     constructor() {
@@ -195,17 +197,12 @@ export class Router {
             }
         }
 
-        // this.initEvents();
-    }
 
-    // initEvents() {
-    //     window.addEventListener('DOMContentLoaded', this.openRoute.bind(this));
-    //     window.addEventListener('hashchange', this.openRoute.bind(this));
-    // }
+    }
 
     async openRoute() {
         const oldRoute = this.currentRoute;
-        const urlRoute = window.location.hash || '#/';
+        const urlRoute = window.location.hash.split('?')[0];;
         const newRoute = this.routes.find(item => item.route === urlRoute);
 
         if (!newRoute) {
@@ -304,6 +301,35 @@ export class Router {
                     userNameElements[i].innerText = userName;
                 }
 
+                // 4. Делаем активным текущий пункт меню
+                this.activateMenuItem(newRoute);
+
+                // 5. Обновляем баланс
+                this.balanceElements = document.getElementsByClassName('balance');
+                this.refreshBalance().then();
+
+                // 6. Редактирование баланса
+                this.balancePopupElement = document.getElementById('popup-balance');
+                this.balancePopupElement.classList.add('d-none');
+                this.balanceInputElement = document.getElementById('balance-value');
+
+                for (const balanceElement of this.balanceElements) {
+                    balanceElement.addEventListener('click', e => {
+                        e.preventDefault();
+                        this.showBalancePopup().then();
+                    });
+                }
+
+                document.getElementById('balance-save').addEventListener('click', e => {
+                    e.preventDefault();
+                    this.editBalance().then();
+                })
+
+                document.getElementById('balance-cancel').addEventListener('click', e => {
+                    e.preventDefault();
+                    this.balancePopupElement.classList.add('d-none');
+                })
+
             } else {
                 // Если layout не используется — просто вставляем шаблон
                 this.contentPageElement.innerHTML = await fetch(newRoute.filePathTemplate)
@@ -315,5 +341,112 @@ export class Router {
         if (newRoute.load && typeof newRoute.load === 'function') {
             newRoute.load();
         }
+    }
+
+    activateMenuItem(route) {
+        let currentRoute = route.route;
+
+        // Особый случай: для operations/create и operations/edit
+        // нужно активировать соответствующий пункт в меню "Категории"
+        const isOperationsSpecialCase = currentRoute.startsWith('#/operations/create') ||
+            currentRoute.startsWith('#/operations/edit');
+
+        if (isOperationsSpecialCase) {
+            // Получаем параметры из хеша
+            const params = CommonUtils.getHashParams();
+            const target = params.target;
+
+            // Меняем currentRoute на соответствующий categories роут
+            if (target === 'income') {
+                currentRoute = '#/categories/income';
+            } else if (target === 'expense') {
+                currentRoute = '#/categories/expense';
+            }
+        }
+
+        // Сначала сбрасываем active у всех возможных элементов
+        document.querySelectorAll('.nav-link, li.nav-item.rounded-2, a.btn-toggle')
+            .forEach(el => el.classList.remove('active'));
+
+        // Ищем подходящий nav-link
+        document.querySelectorAll('.nav-link').forEach(item => {
+            const href = item.getAttribute('href');
+
+            // Пропускаем элементы без href (например, сам btn-toggle)
+            if (!href) return;
+
+            // Особый случай: не активируем #/operations для operations/create и operations/edit
+            if (isOperationsSpecialCase && href === '#/operations') {
+                return;
+            }
+
+            // Проверка совпадения для хеш-роутинга
+            const isActive = (currentRoute.includes(href) && href !== '#/') ||
+                (currentRoute === '#/' && href === '#/');
+
+            if (isActive) {
+                item.classList.add('active');
+
+                // Проверяем, находится ли ссылка внутри раскрывающегося меню
+                const collapse = item.closest('.collapse');
+                if (collapse) {
+                    // "Прапрадед" — li.nav-item.rounded-2
+                    const topLevelItem = item.closest('li.nav-item.rounded-2');
+                    if (topLevelItem) topLevelItem.classList.add('active');
+
+                    // Элемент a.btn-toggle на одном уровне с div.collapse ("дедушкой")
+                    const toggle = collapse.parentElement.querySelector('a.btn-toggle');
+                    if (toggle) toggle.classList.add('active');
+
+                    // Дополнительно: разворачиваем меню, если оно свёрнуто
+                    if (!collapse.classList.contains('show')) {
+                        new bootstrap.Collapse(collapse, { toggle: true });
+                    }
+                }
+            }
+        });
+    }
+
+    async getBalance() {
+        const result = await HttpUtils.request('/balance', 'GET', true);
+
+        let balance = 0;
+
+        if (!result || (result && result.error)) {
+            alert('Возникла ошибка при запросе баланса. Обратитесь в поддержку');
+            balance = 0;
+        } else {
+            balance = result.balance;
+        }
+
+        return balance;
+    }
+
+    async refreshBalance() {
+        const balance = await this.getBalance();
+        for (const balanceElement of this.balanceElements) {
+            balanceElement.querySelector('span').innerText = balance + '$';
+        }
+
+    }
+
+    async showBalancePopup() {
+        this.balancePopupElement.classList.remove('d-none');
+        this.balanceInputElement.value = await this.getBalance();
+    }
+
+    async editBalance() {
+       if (this.balanceInputElement.value) {
+           const result = await HttpUtils.request('/balance', 'PUT', true, {
+               newBalance: this.balanceInputElement.value,
+           })
+
+           if (!result || (result && result.error)) {
+               alert('Возникла ошибка при изменении баланса. Обратитесь в поддержку');
+           }
+       }
+
+       this.balancePopupElement.classList.add('d-none');
+       await this.refreshBalance();
     }
 }

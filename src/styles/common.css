@@ -29,6 +29,10 @@ nav.sidebar {
     max-width: 219px;
 }
 
+a {
+    cursor: pointer;
+}
+
 nav a {
     font-family: 'roboto-regular', sans-serif;
     font-size: 14px;
@@ -38,11 +42,11 @@ nav a {
 li.nav-item {
     font-size: 14px;
     cursor: pointer;
+    /*border: 1px solid transparent;*/
 }
 
 .nav-item.active {
-    border: 1px solid #0D6EFD;
-    border-radius: 6px;
+    border: 1px solid  #0D6EFD;
 }
 
 .nav-item.categories-menu.active {
@@ -140,14 +144,14 @@ li.nav-item {
 }
 
 /* Стилизуем input */
-.date-input {
-    color: transparent; /* Скрываем стандартный текст */
-    background: transparent;
-    cursor: pointer;
-    position: relative;
-    z-index: 2;
-    min-width: 60px; /* Минимальная ширина */
-}
+/*.date-input {*/
+/*    color: transparent; !* Скрываем стандартный текст *!*/
+/*    background: transparent;*/
+/*    cursor: pointer;*/
+/*    position: relative;*/
+/*    z-index: 2;*/
+/*    min-width: 60px; !* Минимальная ширина *!*/
+/*}*/
 
 /* Когда дата выбрана, показываем её */
 .date-input:valid {
@@ -167,6 +171,7 @@ li.nav-item {
 
 .popup-container {
     background-color: rgba(0, 0, 0, 0.49);
+    z-index: 10;
 }
 
 .popup {
